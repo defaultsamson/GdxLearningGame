@@ -5,10 +5,10 @@ import java.util.List;
 
 import com.badlogic.gdx.Game;
 
+import net.qwertysam.api.gui.screen.ScreenManager;
+import net.qwertysam.api.util.IDisposable;
 import net.qwertysam.assets.Assets;
-import net.qwertysam.gui.screens.ScreenManager;
-import net.qwertysam.mygame.assets.FileManager;
-import net.qwertysam.resource.IDisposable;
+import net.qwertysam.assets.Files;
 
 public class MyGdxGame extends Game
 {
@@ -17,7 +17,7 @@ public class MyGdxGame extends Game
 	private List<IDisposable> disposables;
 	
 	private Assets assets;
-	private FileManager fileManager;
+	private Files files;
 	private ScreenManager screenManager;
 	
 	@Override
@@ -30,7 +30,7 @@ public class MyGdxGame extends Game
 		assets = new Assets(this);
 		assets().load();
 		
-		fileManager = new FileManager(this);
+		files = new Files(this);
 		screenManager = new ScreenManager(this);
 		
 		registerDisposable(assets());
@@ -59,9 +59,9 @@ public class MyGdxGame extends Game
 		return assets;
 	}
 	
-	public FileManager fileManager()
+	public Files files()
 	{
-		return fileManager;
+		return files;
 	}
 	
 	public ScreenManager screenManager()

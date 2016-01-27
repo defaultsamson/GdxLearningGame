@@ -3,12 +3,12 @@ package net.qwertysam.gui.screens;
 import com.badlogic.gdx.graphics.Color;
 
 import box2dLight.PointLight;
-import net.qwertysam.builder.LightBuilder;
-import net.qwertysam.entity.BoundsEntity;
-import net.qwertysam.entity.SpriteEntity;
-import net.qwertysam.gui.huds.InGameHud;
+import net.qwertysam.api.builder.LightBuilder;
+import net.qwertysam.api.entity.BoundsEntity;
+import net.qwertysam.api.entity.SpriteEntity;
+import net.qwertysam.api.gui.screen.PhysicsScreen;
+import net.qwertysam.api.rendering.RenderableHolder;
 import net.qwertysam.main.MyGdxGame;
-import net.qwertysam.rendering.RenderableHolder;
 
 public class PlayScreen extends PhysicsScreen
 {
@@ -26,7 +26,7 @@ public class PlayScreen extends PhysicsScreen
 		
 		spriteEntities = new RenderableHolder<SpriteEntity>();
 		
-		meme = new SpriteEntity(game.assets().kakchoke, world, 65000F, 600, 400, false, false);
+		meme = new SpriteEntity(game.assets().kakchoke, world, 65000F, 600, 400, false, true);
 		
 		worldBounds = new BoundsEntity(world, 0F, 0F, game.assets().background.getWidth(), game.assets().background.getHeight());
 		
@@ -39,9 +39,9 @@ public class PlayScreen extends PhysicsScreen
 		
 		buttonHolder = new InGameHud(game);
 		
-		rayHandler.setAmbientLight(0.3F);
+		rayHandler.setAmbientLight(1.5F);
 		
-		light = LightBuilder.createPointLight(rayHandler, 200, new Color(0F, 0F, 0F, 1F), 500, 200, 200);
+		light = LightBuilder.createPointLight(rayHandler, 200, new Color(0F, 0F, 0F, 1F), 1000, 200, 200);
 		
 		light.setSoftnessLength(1.5F);
 		

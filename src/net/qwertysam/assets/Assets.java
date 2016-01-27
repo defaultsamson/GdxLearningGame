@@ -1,34 +1,23 @@
 package net.qwertysam.assets;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.FileHandleResolver;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
-import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 
-import net.qwertysam.builder.AssetBuilder;
+import net.qwertysam.api.assets.Asset;
+import net.qwertysam.api.assets.AssetLoader;
+import net.qwertysam.api.builder.AssetBuilder;
 import net.qwertysam.main.MyGdxGame;
-import net.qwertysam.resource.IDisposable;
 
-public class Assets implements IDisposable
+public class Assets extends AssetLoader
 {
-	private MyGdxGame game;
-	private final AssetManager manager;
-	private List<Asset> assets;
-	
 	public Assets(MyGdxGame game)
 	{
-		this.game = game;
-		manager = new AssetManager();
-		assets = new ArrayList<Asset>();
+		super(game);
 	}
 	
 	public Sprite kakchoke;
@@ -45,13 +34,9 @@ public class Assets implements IDisposable
 	/**
 	 * Queues all the assets to be loaded by the manager.
 	 */
+	@Override
 	public void queueLoad()
 	{
-		// Set the loaders for the generator and the fonts themselves
-		FileHandleResolver resolver = new InternalFileHandleResolver();
-		manager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
-		manager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(resolver));
-		
 		// All the assets to be loaded.
 		addAsset(new Asset("kakchoke", "meme/kak2.png", Texture.class));
 		addAsset(new Asset("button", "buttons/button1.png", Texture.class));
@@ -70,45 +55,10 @@ public class Assets implements IDisposable
 		}
 	}
 	
-	public void load()
-	{
-		System.out.println("Loading Assets...");
-		
-		queueLoad();
-		
-		int queued = manager.getQueuedAssets();
-		
-		int previouslyLoaded = -1;
-		
-		long startTime = System.currentTimeMillis();
-		
-		while (!manager.update())
-		{
-			int loaded = manager.getLoadedAssets();
-			
-			if (previouslyLoaded != loaded)
-			{
-				System.out.println(loaded + "/" + queued + " (" + (int) (manager.getProgress() * 100) + "%)");
-				previouslyLoaded = loaded;
-			}
-		}
-		
-		long endTime = System.currentTimeMillis();
-		
-		System.out.println(queued + "/" + queued + " (100%) Assets loaded. Took: " + (endTime - startTime) + " milliseconds.");
-		
-		long startTime2 = System.currentTimeMillis();
-		
-		initialize();
-		
-		long endTime2 = System.currentTimeMillis();
-		
-		System.out.println("Objects initialized. Took: " + (endTime2 - startTime2) + " milliseconds.");
-	}
-	
 	/**
 	 * Loads all the to their variables.
 	 */
+	@Override
 	public void initialize()
 	{
 		kakchoke = AssetBuilder.createSprite(this, "kakchoke");
@@ -123,55 +73,13 @@ public class Assets implements IDisposable
 		font = AssetBuilder.createFont(this, "font", 128);
 	}
 	
-	public void addAsset(Asset asset)
-	{
-		assets.add(asset);
-	}
-	
-	/**
-	 * Gets the asset with the specified key.
-	 * 
-	 * @param key the key used to identify the asset
-	 * @return the asset with the specified key. <b>null</b> if there's no asset
-	 *         with that key.
-	 */
-	public Asset getAsset(String key)
-	{
-		for (Asset asset : assets)
-		{
-			if (asset.key.equals(key)) return asset;
-		}
-		
-		return null;
-	}
-	
 	@Override
 	public void dispose()
 	{
-		manager.dispose();
+		super.dispose();
 		
-		// Disposes of all the assets not loaded from this' AssetManager
+		// All the non-native manager disposables
+		dst.dispose();
 		font.dispose();
-	}
-	
-	/**
-	 * Gets the AssetManager of this.
-	 * 
-	 * @return the AssetManager of this
-	 */
-	public AssetManager getManager()
-	{
-		return manager;
-	}
-	
-	/**
-	 * Gets the game instance of this.
-	 * 
-	 * @return the game instance of this.
-	 * 		
-	 */
-	public MyGdxGame getGame()
-	{
-		return game;
 	}
 }

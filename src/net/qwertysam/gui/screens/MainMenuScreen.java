@@ -1,6 +1,6 @@
 package net.qwertysam.gui.screens;
 
-import net.qwertysam.gui.huds.MainMenuGui;
+import net.qwertysam.api.gui.screen.GuiScreen;
 import net.qwertysam.main.MyGdxGame;
 
 public class MainMenuScreen extends GuiScreen
