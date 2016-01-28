@@ -45,12 +45,12 @@ public class DeviceUtil
 	
 	public static boolean isDeviceLandscape()
 	{
-		return getDeviceOrientation() == Orientation.Portrait;
+		return getDeviceOrientation() == Orientation.Landscape;
 	}
 	
 	public static boolean isDevicePortrait()
 	{
-		return getDeviceOrientation() == Orientation.Landscape;
+		return getDeviceOrientation() == Orientation.Portrait;
 	}
 	
 	public static Input getInput()

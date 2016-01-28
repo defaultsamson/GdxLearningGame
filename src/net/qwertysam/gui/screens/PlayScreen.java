@@ -13,7 +13,6 @@ import net.qwertysam.main.MyGdxGame;
 public class PlayScreen extends PhysicsScreen
 {
 	private RenderableHolder<SpriteEntity> spriteEntities;
-	private InGameHud buttonHolder;
 	
 	SpriteEntity meme;
 	BoundsEntity worldBounds;
@@ -36,8 +35,6 @@ public class PlayScreen extends PhysicsScreen
 		spriteEntities.registerEntry(new SpriteEntity(game.assets().bob, world, 15000F, 650, 0));
 		spriteEntities.registerEntry(new SpriteEntity(game.assets().bill_mad, world, 15000F, 650, 0));
 		spriteEntities.registerEntry(new SpriteEntity(game.assets().arthur, world, 20000F, 650, 0));
-		
-		buttonHolder = new InGameHud(game);
 		
 		rayHandler.setAmbientLight(1.5F);
 		
@@ -100,7 +97,7 @@ public class PlayScreen extends PhysicsScreen
 			}
 		}
 		
-		buttonHolder.onTick(touches.getTouches(), camera.position.x - (camera.viewportWidth / 2), camera.position.y - (camera.viewportHeight / 2));
+		buttonTick(touches.getTouches(), camera.position.x - (camera.viewportWidth / 2), camera.position.y - (camera.viewportHeight / 2));
 	}
 	
 	private float xVel = 0F;
@@ -112,7 +109,7 @@ public class PlayScreen extends PhysicsScreen
 		batch.draw(game.assets().background, 0, 0);
 		
 		spriteEntities.renderEntries(batch);
-		buttonHolder.renderEntries(batch);
+		renderEntries(batch);
 		
 		camera.position.set(meme.getCenterX(), meme.getCenterY(), 0);
 		

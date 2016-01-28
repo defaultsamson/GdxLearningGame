@@ -3,7 +3,7 @@ package net.qwertysam.api.gui.screen;
 import com.badlogic.gdx.Screen;
 
 import net.qwertysam.api.util.IDisposable;
-import net.qwertysam.gui.screens.MainMenuScreen;
+import net.qwertysam.gui.screens.MainMenuGui;
 import net.qwertysam.gui.screens.PlayScreen;
 import net.qwertysam.main.MyGdxGame;
 
@@ -24,7 +24,7 @@ public class ScreenManager implements IDisposable
 	private void loadScreens()
 	{
 		playScreen = new PlayScreen(game);
-		mainMenu = new MainMenuScreen(game);
+		mainMenu = new MainMenuGui(game);
 	}
 	
 	public void switchScreen(Screen screen)

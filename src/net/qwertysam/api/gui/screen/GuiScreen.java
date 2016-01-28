@@ -6,11 +6,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import net.qwertysam.api.gui.ButtonHud;
 import net.qwertysam.api.util.IDisposable;
 import net.qwertysam.api.util.TouchInput;
 import net.qwertysam.main.MyGdxGame;
 
-public class GuiScreen implements Screen, IGuiScreen, IDisposable
+public class GuiScreen extends ButtonHud implements Screen, IGuiScreen, IDisposable
 {
 	protected MyGdxGame game;
 	protected OrthographicCamera camera;
@@ -19,15 +20,22 @@ public class GuiScreen implements Screen, IGuiScreen, IDisposable
 	
 	public GuiScreen(MyGdxGame game)
 	{
+		super();
+		
 		this.game = game;
 		
 		camera = new OrthographicCamera();
-		camera.setToOrtho(game.isInverted(), 1280, 720);
+		camera.setToOrtho(game.isInverted(), 720, 1280);
 		
 		batch = new SpriteBatch();
 		
 		touches = new TouchInput(camera);
+		
+		init();
 	}
+	
+	public void init()
+	{}
 	
 	@Override
 	public void show()
@@ -58,6 +66,9 @@ public class GuiScreen implements Screen, IGuiScreen, IDisposable
 		// Draws the actual shiz in the screen
 		drawScreen(delta);
 		
+		// Draws the buttons over everything
+		renderEntries(batch);
+		
 		// Ends the drawing phase
 		batch.end();
 		
@@ -69,6 +80,7 @@ public class GuiScreen implements Screen, IGuiScreen, IDisposable
 	public void tick(float delta)
 	{
 		touches.update();
+		if (!isEmpty()) buttonTick(touches.getTouches(), camera.position.x - (camera.viewportWidth / 2), camera.position.y - (camera.viewportHeight / 2));
 	}
 	
 	@Override

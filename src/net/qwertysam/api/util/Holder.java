@@ -17,6 +17,11 @@ public class Holder<T>
 		return entries;
 	}
 	
+	public boolean isEmpty()
+	{
+		return entries.isEmpty();
+	}
+	
 	public void unregisterEntty(T entry)
 	{
 		entries.remove(entry);

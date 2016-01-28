@@ -7,24 +7,15 @@ import com.badlogic.gdx.math.Vector2;
 
 import net.qwertysam.api.rendering.RenderableHolder;
 import net.qwertysam.api.util.IDisposable;
-import net.qwertysam.main.MyGdxGame;
 
 public class ButtonHud extends RenderableHolder<GuiButton> implements IDisposable
 {
-	protected MyGdxGame game;
-	
 	/** The x offset of this. */
 	private float x;
 	/** The y offset of this. */
 	private float y;
 	
-	public ButtonHud(MyGdxGame game)
-	{
-		this.game = game;
-		init();
-	}
-	
-	public void init()
+	public ButtonHud()
 	{}
 	
 	/**
@@ -32,9 +23,9 @@ public class ButtonHud extends RenderableHolder<GuiButton> implements IDisposabl
 	 * 
 	 * @param touch the touch position on the screen
 	 */
-	public void onTick(List<Vector2> touch)
+	public void buttonTick(List<Vector2> touch)
 	{
-		onTick(touch, 0F, 0F);
+		buttonTick(touch, 0F, 0F);
 	}
 	
 	/**
@@ -44,7 +35,7 @@ public class ButtonHud extends RenderableHolder<GuiButton> implements IDisposabl
 	 * @param xOffset the bottom left x ordinate of the camera position relative to the world
 	 * @param yOffset the bottom left y ordinate of the camera position relative to the world
 	 */
-	public void onTick(List<Vector2> touches, float xOffset, float yOffset)
+	public void buttonTick(List<Vector2> touches, float xOffset, float yOffset)
 	{
 		x = xOffset;
 		y = yOffset;
