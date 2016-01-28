@@ -3,13 +3,16 @@ package net.qwertysam.api.gui;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+import net.qwertysam.api.gui.screen.GuiScreen;
+import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.api.rendering.Renderable;
 
 public class GuiButton implements IGuiButton, Renderable
 {
-	private ButtonHud screen;
+	private GuiScreen screen;
 	private int id;
 	
 	private Sprite normal;
@@ -22,17 +25,17 @@ public class GuiButton implements IGuiButton, Renderable
 	
 	private boolean isTouched;
 	
-	public GuiButton(ButtonHud screen, int id, List<Sprite> sprites, float x, float y)
+	public GuiButton(GuiScreen screen, int id, List<Sprite> sprites, float x, float y)
 	{
 		this(screen, id, sprites, x, y, 0F);
 	}
 	
-	public GuiButton(ButtonHud screen, int id, List<Sprite> sprites, float x, float y, float touchRadius)
+	public GuiButton(GuiScreen screen, int id, List<Sprite> sprites, float x, float y, float touchRadius)
 	{
 		this(screen, id, sprites, x, y, touchRadius, 0F);
 	}
 	
-	public GuiButton(ButtonHud screen, int id, List<Sprite> sprites, float x, float y, float touchRadius, float rotation)
+	public GuiButton(GuiScreen screen, int id, List<Sprite> sprites, float x, float y, float touchRadius, float rotation)
 	{
 		this.screen = screen;
 		this.id = id;
@@ -129,5 +132,11 @@ public class GuiButton implements IGuiButton, Renderable
 	public float getTouchRadius()
 	{
 		return touchRadius;
+	}
+
+	@Override
+	public void render(SpriteBatch batch, float xOffset, float yOffset)
+	{
+		RenderUtil.defaultDraw(batch, getSprite(), getX(), getY(), xOffset, yOffset, getRotation());
 	}
 }

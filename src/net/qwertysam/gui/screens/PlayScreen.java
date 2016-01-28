@@ -4,18 +4,18 @@ import com.badlogic.gdx.graphics.Color;
 
 import box2dLight.PointLight;
 import net.qwertysam.api.builder.LightBuilder;
-import net.qwertysam.api.entity.BoundsEntity;
-import net.qwertysam.api.entity.SpriteEntity;
+import net.qwertysam.api.entity.physics.PhysicsBoundsEntity;
+import net.qwertysam.api.entity.physics.PhysicsSpriteEntity;
 import net.qwertysam.api.gui.screen.PhysicsScreen;
 import net.qwertysam.api.rendering.RenderableHolder;
 import net.qwertysam.main.MyGdxGame;
 
 public class PlayScreen extends PhysicsScreen
 {
-	private RenderableHolder<SpriteEntity> spriteEntities;
+	private RenderableHolder<PhysicsSpriteEntity> spriteEntities;
 	
-	SpriteEntity meme;
-	BoundsEntity worldBounds;
+	PhysicsSpriteEntity meme;
+	PhysicsBoundsEntity worldBounds;
 	
 	PointLight light;
 	
@@ -23,18 +23,18 @@ public class PlayScreen extends PhysicsScreen
 	{
 		super(game);
 		
-		spriteEntities = new RenderableHolder<SpriteEntity>();
+		spriteEntities = new RenderableHolder<PhysicsSpriteEntity>();
 		
-		meme = new SpriteEntity(game.assets().kakchoke, world, 65000F, 600, 400, false, true);
+		meme = new PhysicsSpriteEntity(game.assets().kakchoke, world, 65000F, 600, 400, false, true);
 		
-		worldBounds = new BoundsEntity(world, 0F, 0F, game.assets().background.getWidth(), game.assets().background.getHeight());
+		worldBounds = new PhysicsBoundsEntity(world, 0F, 0F, game.assets().background.getWidth(), game.assets().background.getHeight());
 		
 		spriteEntities.registerEntry(meme);
-		spriteEntities.registerEntry(new SpriteEntity(2F, game.assets().potato, world, 30000F, 650, 0));
-		spriteEntities.registerEntry(new SpriteEntity(3F, game.assets().bill, world, 15000F, 650, 0));
-		spriteEntities.registerEntry(new SpriteEntity(game.assets().bob, world, 15000F, 650, 0));
-		spriteEntities.registerEntry(new SpriteEntity(game.assets().bill_mad, world, 15000F, 650, 0));
-		spriteEntities.registerEntry(new SpriteEntity(game.assets().arthur, world, 20000F, 650, 0));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(2F, game.assets().potato, world, 30000F, 650, 0));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(3F, game.assets().bill, world, 15000F, 650, 0));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(game.assets().bob, world, 15000F, 650, 0));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(game.assets().bill_mad, world, 15000F, 650, 0));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(game.assets().arthur, world, 20000F, 650, 0));
 		
 		rayHandler.setAmbientLight(1.5F);
 		
@@ -96,8 +96,6 @@ public class PlayScreen extends PhysicsScreen
 				meme.addVelocity(xVel, yVel);
 			}
 		}
-		
-		buttonTick(touches.getTouches(), camera.position.x - (camera.viewportWidth / 2), camera.position.y - (camera.viewportHeight / 2));
 	}
 	
 	private float xVel = 0F;

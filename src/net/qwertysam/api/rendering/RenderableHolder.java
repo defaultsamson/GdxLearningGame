@@ -1,6 +1,5 @@
 package net.qwertysam.api.rendering;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import net.qwertysam.api.util.Holder;
@@ -26,11 +25,7 @@ public class RenderableHolder<T> extends Holder<T>
 		{
 			if (entry instanceof Renderable)
 			{
-				Renderable rEntry = (Renderable) entry;
-				
-				Sprite sprite = rEntry.getSprite();
-				
-				batch.draw(sprite, rEntry.getX() + xOffset, rEntry.getY() + yOffset, sprite.getOriginX() + xOffset, sprite.getOriginY() + yOffset, sprite.getWidth(), sprite.getHeight(), sprite.getScaleX(), sprite.getScaleY(), rEntry.getRotation());
+				((Renderable) entry).render(batch, xOffset, yOffset);
 			}
 		}
 		

@@ -1,4 +1,4 @@
-package net.qwertysam.api.entity;
+package net.qwertysam.api.entity.physics;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -11,7 +11,7 @@ import net.qwertysam.api.util.PhysicsUtil;
 /**
  * An Entity with a square physics Body.
  */
-public class BoxEntity extends Entity
+public class PhysicsBoxEntity extends PhysicsEntity
 {
 	/** The width of this in pixels. */
 	private float width;
@@ -26,7 +26,7 @@ public class BoxEntity extends Entity
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public BoxEntity(World world, float mass, float width, float height)
+	public PhysicsBoxEntity(World world, float mass, float width, float height)
 	{
 		this(DEFAULT_FRICTION, world, mass, 0F, 0F, width, height, IS_STATIC_DEFAULT);
 	}
@@ -41,7 +41,7 @@ public class BoxEntity extends Entity
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public BoxEntity(World world, float mass, float x, float y, float width, float height)
+	public PhysicsBoxEntity(World world, float mass, float x, float y, float width, float height)
 	{
 		this(DEFAULT_FRICTION, world, mass, x, y, width, height, IS_STATIC_DEFAULT);
 	}
@@ -55,7 +55,7 @@ public class BoxEntity extends Entity
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public BoxEntity(World world, float mass, float width, float height, boolean isStatic)
+	public PhysicsBoxEntity(World world, float mass, float width, float height, boolean isStatic)
 	{
 		this(DEFAULT_FRICTION, world, mass, 0F, 0F, width, height, isStatic);
 	}
@@ -70,7 +70,7 @@ public class BoxEntity extends Entity
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public BoxEntity(World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsBoxEntity(World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		this(DEFAULT_FRICTION, DEFAULT_RESTITUTION, world, mass, 0F, 0F, width, height, isStatic, canRotate);
 	}
@@ -86,7 +86,7 @@ public class BoxEntity extends Entity
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public BoxEntity(World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsBoxEntity(World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(DEFAULT_FRICTION, world, mass, x, y, width, height, isStatic);
 	}
@@ -100,7 +100,7 @@ public class BoxEntity extends Entity
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public BoxEntity(float friction, World world, float mass, float width, float height)
+	public PhysicsBoxEntity(float friction, World world, float mass, float width, float height)
 	{
 		this(friction, world, mass, 0F, 0F, width, height, IS_STATIC_DEFAULT);
 	}
@@ -116,7 +116,7 @@ public class BoxEntity extends Entity
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public BoxEntity(float friction, World world, float mass, float x, float y, float width, float height)
+	public PhysicsBoxEntity(float friction, World world, float mass, float x, float y, float width, float height)
 	{
 		this(friction, world, mass, x, y, width, height, IS_STATIC_DEFAULT);
 	}
@@ -131,7 +131,7 @@ public class BoxEntity extends Entity
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public BoxEntity(float friction, World world, float mass, float width, float height, boolean isStatic)
+	public PhysicsBoxEntity(float friction, World world, float mass, float width, float height, boolean isStatic)
 	{
 		this(friction, world, mass, 0F, 0F, width, height, isStatic);
 	}
@@ -147,7 +147,7 @@ public class BoxEntity extends Entity
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public BoxEntity(float friction, World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsBoxEntity(float friction, World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		this(friction, DEFAULT_RESTITUTION, world, mass, 0F, 0F, width, height, isStatic, canRotate);
 	}
@@ -164,7 +164,7 @@ public class BoxEntity extends Entity
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public BoxEntity(float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsBoxEntity(float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(friction, DEFAULT_RESTITUTION, world, mass, x, y, width, height, isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -179,7 +179,7 @@ public class BoxEntity extends Entity
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public BoxEntity(float friction, float restitution, World world, float mass, float width, float height)
+	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float width, float height)
 	{
 		this(friction, restitution, world, mass, 0F, 0F, width, height, IS_STATIC_DEFAULT, CAN_ROTATE_DEFAULT);
 	}
@@ -196,7 +196,7 @@ public class BoxEntity extends Entity
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public BoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height)
+	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height)
 	{
 		this(friction, restitution, world, mass, x, y, width, height, IS_STATIC_DEFAULT, CAN_ROTATE_DEFAULT);
 	}
@@ -212,7 +212,7 @@ public class BoxEntity extends Entity
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public BoxEntity(float friction, float restitution, World world, float mass, float width, float height, boolean isStatic)
+	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float width, float height, boolean isStatic)
 	{
 		this(friction, restitution, world, mass, 0F, 0F, width, height, isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -229,7 +229,7 @@ public class BoxEntity extends Entity
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public BoxEntity(float friction, float restitution, World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		this(friction, restitution, world, mass, 0F, 0F, width, height, isStatic, canRotate);
 	}
@@ -247,7 +247,7 @@ public class BoxEntity extends Entity
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public BoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(friction, restitution, world, mass, x, y, width, height, isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -266,7 +266,7 @@ public class BoxEntity extends Entity
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public BoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		super(createBoxBody(friction, restitution, world, mass, x, y, width, height, isStatic, canRotate));
 		
@@ -379,7 +379,7 @@ public class BoxEntity extends Entity
 	 * @param bounds the BoundsEntity to test for
 	 * @return if this is fully contained within <b>bounds</b>.
 	 */
-	public boolean isInWorldBounds(BoundsEntity bounds)
+	public boolean isInWorldBounds(PhysicsBoundsEntity bounds)
 	{
 		return !(getX() < bounds.getX1() || getX() + getWidth() > bounds.getX2() || getY() < bounds.getY1() || getY() + getHeight() > bounds.getY2());
 	}

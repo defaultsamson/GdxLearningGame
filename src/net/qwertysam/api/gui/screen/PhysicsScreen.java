@@ -51,4 +51,12 @@ public class PhysicsScreen extends GuiScreen
 		super.dispose();
 		world.dispose();
 	}
+	
+	@Override
+	public void pressAction(int buttonID)
+	{}
+	
+	@Override
+	public void releaseAction(int buttonID)
+	{}
 }

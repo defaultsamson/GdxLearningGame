@@ -1,4 +1,4 @@
-package net.qwertysam.api.entity;
+package net.qwertysam.api.entity.physics;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -9,7 +9,7 @@ import net.qwertysam.api.util.PhysicsUtil;
 /**
  * A physical Entity.
  */
-public class Entity
+public class PhysicsEntity
 {
 	/** If entities can rotate by default. */
 	public static final boolean CAN_ROTATE_DEFAULT = true;
@@ -28,7 +28,7 @@ public class Entity
 	 * 
 	 * @param body the physics Body for this
 	 */
-	public Entity(Body body)
+	public PhysicsEntity(Body body)
 	{
 		this.body = body;
 	}

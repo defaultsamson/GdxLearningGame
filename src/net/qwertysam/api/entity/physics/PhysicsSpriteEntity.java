@@ -1,11 +1,13 @@
-package net.qwertysam.api.entity;
+package net.qwertysam.api.entity.physics;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 
+import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.api.rendering.Renderable;
 
-public class SpriteEntity extends BoxEntity implements Renderable
+public class PhysicsSpriteEntity extends PhysicsBoxEntity implements Renderable
 {
 	private Sprite sprite;
 	
@@ -18,7 +20,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param x the x ordinate of this in pixels
 	 * @param y the y ordinate of this in pixels
 	 */
-	public SpriteEntity(Sprite sprite, World world, float mass, float x, float y)
+	public PhysicsSpriteEntity(Sprite sprite, World world, float mass, float x, float y)
 	{
 		this(1F, sprite, DEFAULT_FRICTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), IS_STATIC_DEFAULT);
 	}
@@ -33,7 +35,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param y the y ordinate of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(Sprite sprite, World world, float mass, float x, float y, boolean isStatic)
+	public PhysicsSpriteEntity(Sprite sprite, World world, float mass, float x, float y, boolean isStatic)
 	{
 		this(1F, sprite, DEFAULT_FRICTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic);
 	}
@@ -49,7 +51,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(Sprite sprite, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(Sprite sprite, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
 	{
 		this(1F, sprite, DEFAULT_FRICTION, DEFAULT_RESTITUTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, canRotate);
 	}
@@ -64,7 +66,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param x the x ordinate of this in pixels
 	 * @param y the y ordinate of this in pixels
 	 */
-	public SpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y)
 	{
 		this(1F, sprite, friction, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), IS_STATIC_DEFAULT);
 	}
@@ -80,7 +82,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param y the y ordinate of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, boolean isStatic)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, boolean isStatic)
 	{
 		this(1F, sprite, friction, DEFAULT_RESTITUTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -97,7 +99,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
 	{
 		this(1F, sprite, friction, DEFAULT_RESTITUTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, canRotate);
 	}
@@ -113,7 +115,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param x the x ordinate of this in pixels
 	 * @param y the y ordinate of this in pixels
 	 */
-	public SpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y)
 	{
 		this(1F, sprite, friction, restitution, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), IS_STATIC_DEFAULT);
 	}
@@ -130,7 +132,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param y the y ordinate of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, boolean isStatic)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, boolean isStatic)
 	{
 		this(1F, sprite, friction, restitution, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -148,7 +150,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
 	{
 		this(1F, sprite, friction, restitution, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, canRotate);
 	}
@@ -164,7 +166,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public SpriteEntity(Sprite sprite, World world, float mass, float x, float y, float width, float height)
+	public PhysicsSpriteEntity(Sprite sprite, World world, float mass, float x, float y, float width, float height)
 	{
 		this(1F, sprite, DEFAULT_FRICTION, world, mass, x, y, width, height, IS_STATIC_DEFAULT);
 	}
@@ -181,7 +183,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(Sprite sprite, World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsSpriteEntity(Sprite sprite, World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(1F, sprite, DEFAULT_FRICTION, world, mass, x, y, width, height, isStatic);
 	}
@@ -199,7 +201,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(Sprite sprite, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(Sprite sprite, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		this(1F, sprite, DEFAULT_FRICTION, world, mass, x, y, width, height, isStatic, canRotate);
 	}
@@ -216,7 +218,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public SpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height)
 	{
 		this(1F, sprite, friction, world, mass, x, y, width, height, IS_STATIC_DEFAULT);
 	}
@@ -234,7 +236,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(1F, sprite, friction, world, mass, x, y, width, height, isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -253,7 +255,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		this(1F, sprite, friction, DEFAULT_RESTITUTION, world, mass, x, y, width, height, isStatic, canRotate);
 	}
@@ -271,7 +273,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public SpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height)
 	{
 		this(1F, sprite, friction, restitution, world, mass, x, y, width, height, IS_STATIC_DEFAULT, CAN_ROTATE_DEFAULT);
 	}
@@ -290,7 +292,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsSpriteEntity(Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(1F, sprite, friction, restitution, world, mass, x, y, width, height, isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -304,7 +306,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param x the x ordinate of this in pixels
 	 * @param y the y ordinate of this in pixels
 	 */
-	public SpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y)
 	{
 		this(scale, sprite, DEFAULT_FRICTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), IS_STATIC_DEFAULT);
 	}
@@ -319,7 +321,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param y the y ordinate of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, boolean isStatic)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, boolean isStatic)
 	{
 		this(scale, sprite, DEFAULT_FRICTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic);
 	}
@@ -335,7 +337,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
 	{
 		this(scale, sprite, DEFAULT_FRICTION, DEFAULT_RESTITUTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, canRotate);
 	}
@@ -350,7 +352,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param x the x ordinate of this in pixels
 	 * @param y the y ordinate of this in pixels
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y)
 	{
 		this(scale, sprite, friction, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), IS_STATIC_DEFAULT);
 	}
@@ -366,7 +368,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param y the y ordinate of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, boolean isStatic)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, boolean isStatic)
 	{
 		this(scale, sprite, friction, DEFAULT_RESTITUTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -383,7 +385,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
 	{
 		this(scale, sprite, friction, DEFAULT_RESTITUTION, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, canRotate);
 	}
@@ -399,7 +401,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param x the x ordinate of this in pixels
 	 * @param y the y ordinate of this in pixels
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y)
 	{
 		this(scale, sprite, friction, restitution, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), IS_STATIC_DEFAULT);
 	}
@@ -416,7 +418,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param y the y ordinate of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, boolean isStatic)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, boolean isStatic)
 	{
 		this(scale, sprite, friction, restitution, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -434,7 +436,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, boolean isStatic, boolean canRotate)
 	{
 		this(scale, sprite, friction, restitution, world, mass, x, y, sprite.getWidth(), sprite.getHeight(), isStatic, canRotate);
 	}
@@ -450,7 +452,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public SpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, float width, float height)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, float width, float height)
 	{
 		this(scale, sprite, DEFAULT_FRICTION, world, mass, x, y, width, height, IS_STATIC_DEFAULT);
 	}
@@ -467,7 +469,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(scale, sprite, DEFAULT_FRICTION, world, mass, x, y, width, height, isStatic);
 	}
@@ -485,7 +487,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		this(scale, sprite, DEFAULT_FRICTION, world, mass, x, y, width, height, isStatic, canRotate);
 	}
@@ -502,7 +504,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height)
 	{
 		this(scale, sprite, friction, world, mass, x, y, width, height, IS_STATIC_DEFAULT);
 	}
@@ -520,7 +522,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(scale, sprite, friction, world, mass, x, y, width, height, isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -539,7 +541,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		this(scale, sprite, friction, DEFAULT_RESTITUTION, world, mass, x, y, width, height, isStatic, canRotate);
 	}
@@ -557,7 +559,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param width the width of this in pixels
 	 * @param height the height of this in pixels
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height)
 	{
 		this(scale, sprite, friction, restitution, world, mass, x, y, width, height, IS_STATIC_DEFAULT, CAN_ROTATE_DEFAULT);
 	}
@@ -576,7 +578,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param height the height of this in pixels
 	 * @param isStatic if this is capable of having motion
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic)
 	{
 		this(scale, sprite, friction, restitution, world, mass, x, y, width, height, isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -596,7 +598,7 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public SpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsSpriteEntity(float scale, Sprite sprite, float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		super(friction, restitution, world, mass, x, y, width * scale, height * scale, isStatic, canRotate);
 		
@@ -613,5 +615,11 @@ public class SpriteEntity extends BoxEntity implements Renderable
 	public Sprite getSprite()
 	{
 		return sprite;
+	}
+
+	@Override
+	public void render(SpriteBatch batch, float xOffset, float yOffset)
+	{
+		RenderUtil.defaultDraw(batch, sprite, getX(), getY(), xOffset, yOffset, getRotation());
 	}
 }

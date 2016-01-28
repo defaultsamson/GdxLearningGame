@@ -1,4 +1,4 @@
-package net.qwertysam.api.entity;
+package net.qwertysam.api.entity.physics;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import net.qwertysam.api.util.PhysicsUtil;
 
-public class BoundsEntity extends Entity
+public class PhysicsBoundsEntity extends PhysicsEntity
 {
 	/** If BoundsEntities are static by default. */
 	public static final boolean IS_STATIC_DEFAULT = true;
@@ -27,7 +27,7 @@ public class BoundsEntity extends Entity
 	 * @param x2 the seconds x ordinate
 	 * @param y2 the seconds y ordinate
 	 */
-	public BoundsEntity(World world, float x1, float y1, float x2, float y2)
+	public PhysicsBoundsEntity(World world, float x1, float y1, float x2, float y2)
 	{
 		this(world, x1, y1, x2, y2, IS_STATIC_DEFAULT);
 	}
@@ -42,7 +42,7 @@ public class BoundsEntity extends Entity
 	 * @param y2 the seconds y ordinate
 	 * @param isStatic if this is capable of having motion
 	 */
-	public BoundsEntity(World world, float x1, float y1, float x2, float y2, boolean isStatic)
+	public PhysicsBoundsEntity(World world, float x1, float y1, float x2, float y2, boolean isStatic)
 	{
 		this(world, x1, y1, x2, y2, isStatic, CAN_ROTATE_DEFAULT);
 	}
@@ -58,7 +58,7 @@ public class BoundsEntity extends Entity
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public BoundsEntity(World world, float x1, float y1, float x2, float y2, boolean isStatic, boolean canRotate)
+	public PhysicsBoundsEntity(World world, float x1, float y1, float x2, float y2, boolean isStatic, boolean canRotate)
 	{
 		super(createBody(world, x1, y1, x2, y2, isStatic, canRotate));
 		
