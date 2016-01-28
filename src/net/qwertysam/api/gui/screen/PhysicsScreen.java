@@ -7,6 +7,7 @@ import box2dLight.RayHandler;
 import net.qwertysam.api.util.PhysicsUtil;
 import net.qwertysam.main.MyGdxGame;
 
+@Deprecated
 public class PhysicsScreen extends GuiScreen
 {
 	protected World world;

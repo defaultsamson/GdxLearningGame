@@ -1,5 +1,6 @@
 package net.qwertysam.api.gui.screen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -8,19 +9,26 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import net.qwertysam.api.gui.GuiButton;
 import net.qwertysam.api.rendering.RenderableHolder;
 import net.qwertysam.api.util.IDisposable;
-import net.qwertysam.api.util.TouchInput;
 import net.qwertysam.main.MyGdxGame;
 
 public abstract class GuiScreen extends RenderableHolder<GuiButton> implements Screen, IGuiScreen, IDisposable
 {
+	public static final int MAX_TOUCHES = 4; // Typically hardware limit is 10
+	
+	private boolean isTouched;
+	protected List<Vector2> touches;
+	
 	protected MyGdxGame game;
 	protected OrthographicCamera camera;
+	private Viewport viewport;
 	protected SpriteBatch batch;
-	protected TouchInput touches;
 	
 	/** The x offset of the buttons. */
 	private float xButtonOffset;
@@ -31,14 +39,17 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	{
 		super();
 		
+		isTouched = false;
+		touches = new ArrayList<Vector2>();
+		
 		this.game = game;
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(game.isInverted(), 720, 1280);
 		
-		batch = new SpriteBatch();
+		viewport = new FitViewport(720, 1280, camera);
 		
-		touches = new TouchInput(camera);
+		batch = new SpriteBatch();
 		
 		init();
 	}
@@ -88,8 +99,20 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	@Override
 	public void tick(float delta)
 	{
-		touches.update();
-		if (!isEmpty()) buttonTick(touches.getTouches(), camera.position.x - (camera.viewportWidth / 2), camera.position.y - (camera.viewportHeight / 2));
+		touches.clear();
+		
+		isTouched = Gdx.input.isTouched();
+		
+		for (int i = 0; i < MAX_TOUCHES; i++)
+		{
+			if (Gdx.input.isTouched(i))
+			{
+				Vector3 vector3 = viewport.unproject(new Vector3(Gdx.input.getX(i), Gdx.input.getY(i), 0F));
+				touches.add(new Vector2(vector3.x, vector3.y));
+			}
+		}
+		
+		if (!isEmpty()) buttonTick(touches, camera.position.x - (camera.viewportWidth / 2), camera.position.y - (camera.viewportHeight / 2));
 	}
 	
 	@Override
@@ -101,7 +124,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	@Override
 	public void resize(int width, int height)
 	{
-	
+		viewport.update(width, height, true);
 	}
 	
 	@Override
@@ -151,11 +174,6 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	public MyGdxGame getGame()
 	{
 		return game;
-	}
-	
-	public TouchInput getTouches()
-	{
-		return touches;
 	}
 	
 	/**
@@ -210,4 +228,14 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	public abstract void pressAction(int buttonID);
 	
 	public abstract void releaseAction(int buttonID);
+	
+	public boolean isTouched()
+	{
+		return isTouched;
+	}
+	
+	public List<Vector2> getTouches()
+	{
+		return touches;
+	}
 }

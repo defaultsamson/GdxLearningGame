@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import net.qwertysam.api.util.PhysicsUtil;
 
+@Deprecated
 public class PhysicsBoundsEntity extends PhysicsEntity
 {
 	/** If BoundsEntities are static by default. */

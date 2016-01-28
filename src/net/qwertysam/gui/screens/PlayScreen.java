@@ -55,10 +55,10 @@ public class PlayScreen extends PhysicsScreen
 	{
 		super.tick(delta);
 		
-		if (touches.isTouched())
+		if (isTouched())
 		{
-			float xTouch = touches.getTouches().get(0).x;
-			float yTouch = touches.getTouches().get(0).y;
+			float xTouch = getTouches().get(0).x;
+			float yTouch = getTouches().get(0).y;
 			
 			{
 				// Vector components

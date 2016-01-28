@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.api.rendering.Renderable;
 
+@Deprecated
 public class PhysicsSpriteEntity extends PhysicsBoxEntity implements Renderable
 {
 	private Sprite sprite;

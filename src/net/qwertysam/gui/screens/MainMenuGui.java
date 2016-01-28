@@ -22,7 +22,7 @@ public class MainMenuGui extends GuiScreen
 	{
 		batch.draw(game.assets().background, 0, 0);
 		
-		game.assets().font.draw(batch, "" + touches.touches.size(), 100, 200);
+		game.assets().font.draw(batch, "" + touches.size(), 100, 200);
 	}
 	
 	@Override

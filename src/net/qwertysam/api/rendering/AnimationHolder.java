@@ -1,4 +1,4 @@
-package net.qwertysam.api.assets;
+package net.qwertysam.api.rendering;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class MyAnimation
+public class AnimationHolder
 {
 	/** The default frame speed. */
 	public static final float DEFAULT_FRAME_SPEED = 0.2F;
@@ -15,12 +15,12 @@ public class MyAnimation
 	/** The total time elapsed of the animation. */
 	private float stateTime = 0F;
 	
-	public MyAnimation(List<Sprite> sprites)
+	public AnimationHolder(List<Sprite> sprites)
 	{
 		this(sprites, DEFAULT_FRAME_SPEED);
 	}
 	
-	public MyAnimation(List<Sprite> sprites, float frameSpeed)
+	public AnimationHolder(List<Sprite> sprites, float frameSpeed)
 	{
 		animation = new Animation(frameSpeed, sprites.toArray(new Sprite[sprites.size()]));
 		

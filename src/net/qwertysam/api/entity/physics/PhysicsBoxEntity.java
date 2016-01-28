@@ -11,6 +11,7 @@ import net.qwertysam.api.util.PhysicsUtil;
 /**
  * An Entity with a square physics Body.
  */
+@Deprecated
 public class PhysicsBoxEntity extends PhysicsEntity
 {
 	/** The width of this in pixels. */

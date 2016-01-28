@@ -9,6 +9,7 @@ import net.qwertysam.api.util.PhysicsUtil;
 /**
  * A physical Entity.
  */
+@Deprecated
 public class PhysicsEntity
 {
 	/** If entities can rotate by default. */
