@@ -28,7 +28,6 @@ public class MyGdxGame extends Game
 		disposables = new ArrayList<IDisposable>();
 		
 		assets = new Assets(this);
-		assets.load();
 		
 		files = new Files(this);
 		screenManager = new ScreenManager(this);

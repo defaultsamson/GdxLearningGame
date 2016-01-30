@@ -6,10 +6,6 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import net.qwertysam.api.util.PhysicsUtil;
 
-/**
- * A physical Entity.
- */
-//@Deprecated
 public class PhysicsEntity
 {
 	/** If entities can rotate by default. */
@@ -42,7 +38,7 @@ public class PhysicsEntity
 	 */
 	public void addVelocity(float x, float y)
 	{
-		body.setLinearVelocity(body.getLinearVelocity().x + x, body.getLinearVelocity().y + y);
+		setVelocity(getVelocity().x + x, getVelocity().y + y);
 	}
 	
 	/**
@@ -63,7 +59,7 @@ public class PhysicsEntity
 	 */
 	public void setXVelocity(float x)
 	{
-		body.setLinearVelocity(x, body.getLinearVelocity().y);
+		setVelocity(x, getVelocity().y);
 	}
 	
 	/**
@@ -73,7 +69,7 @@ public class PhysicsEntity
 	 */
 	public void setYVelocity(float y)
 	{
-		body.setLinearVelocity(body.getLinearVelocity().x, y);
+		setVelocity(getVelocity().x, y);
 	}
 	
 	/**
@@ -89,7 +85,7 @@ public class PhysicsEntity
 	/**
 	 * Gets the x coordinate of the center of this in pixels.
 	 * 
-	 * @return the x coordinate of the center of this in pixels
+	 * @return the x coordinate of the center of this in pixels.
 	 */
 	public float getCenterX()
 	{
@@ -97,9 +93,9 @@ public class PhysicsEntity
 	}
 	
 	/**
-	 * Gets the y coordinate of the center of this in pixels.
+	 * Gets the y coordinate of the centre of this in pixels.
 	 * 
-	 * @return the y coordinate of the center of this in pixels
+	 * @return the y coordinate of the centre of this in pixels.
 	 */
 	public float getCenterY()
 	{

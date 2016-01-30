@@ -124,6 +124,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	@Override
 	public void resize(int width, int height)
 	{
+		System.out.println("Resizing ViewPort: (" + width + ", " + height + ")");
 		viewport.update(width, height, true);
 	}
 	

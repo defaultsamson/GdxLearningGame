@@ -36,6 +36,7 @@ public class PhysicsScreen extends GuiScreen
 		debug.render();
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void tick(float delta)
 	{

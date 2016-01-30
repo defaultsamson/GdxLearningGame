@@ -26,6 +26,16 @@ public abstract class AssetLoader implements IDisposable
 		manager = new AssetManager();
 		assets = new ArrayList<Asset>();
 		
+		load();
+	}
+	
+	/**
+	 * Queues all the assets to be loaded by the manager.
+	 */
+	protected abstract void queueLoad();
+	
+	public void load()
+	{
 		// Set the loaders for the generator and the fonts themselves
 		FileHandleResolver resolver = new InternalFileHandleResolver();
 		manager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
@@ -37,18 +47,8 @@ public abstract class AssetLoader implements IDisposable
 		{
 			manager.load(asset.path, asset.type);
 		}
-	}
-	
-	/**
-	 * Queues all the assets to be loaded by the manager.
-	 */
-	protected abstract void queueLoad();
-	
-	public void load()
-	{
-		System.out.println("Loading Assets...");
 		
-		queueLoad();
+		System.out.println("Loading Assets...");
 		
 		int queued = manager.getQueuedAssets();
 		

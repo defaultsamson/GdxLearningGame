@@ -11,7 +11,6 @@ import net.qwertysam.api.util.PhysicsUtil;
 /**
  * An Entity with a square physics Body.
  */
-//@Deprecated
 public class PhysicsBoxEntity extends PhysicsEntity
 {
 	/** The width of this in pixels. */
@@ -22,9 +21,9 @@ public class PhysicsBoxEntity extends PhysicsEntity
 	/**
 	 * An Entity with a square physics Body.
 	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param restitution the restitution for this
 	 * @param world the physics world that is in
+	 * @param friction the coefficient of friction for this
+	 * @param restitution the restitution (bounciness) for this
 	 * @param mass the mass of this in grams
 	 * @param x the x ordinate of this in pixels
 	 * @param y the y ordinate of this in pixels
@@ -45,6 +44,9 @@ public class PhysicsBoxEntity extends PhysicsEntity
 	 * Creates a physics Body with the specified parameters.
 	 * 
 	 * @param world the world that the physics body is in
+	 * @param friction the coefficient of friction for this
+	 * @param restitution the restitution (bounciness) for this
+	 * @param mass the mass of this in grams
 	 * @param x the x ordinate of the physics body in pixels
 	 * @param y the y ordinate of the physics body in pixels
 	 * @param width the width of the physics body in pixels

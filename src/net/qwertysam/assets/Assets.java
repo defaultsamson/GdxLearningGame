@@ -48,13 +48,6 @@ public class Assets extends AssetLoader
 		addAsset(new Asset("bill_mad", "entity/bill_mad.png", Texture.class));
 		addAsset(new Asset("dst", "sound/sauce.mp3", Sound.class));
 		addAsset(new Asset("font", "fonts/font1.ttf", FreeTypeFontGenerator.class));
-		
-		System.out.println(assets.size());
-		
-		for (Asset asset : assets)
-		{
-			manager.load(asset.path, asset.type);
-		}
 	}
 	
 	/**
