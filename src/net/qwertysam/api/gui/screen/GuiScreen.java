@@ -74,7 +74,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		tick(delta);
 		
 		// Resizes sprite batch to the screen size
-		batch.setProjectionMatrix(camera.combined);
+		batch.setProjectionMatrix(viewport.getCamera().combined);
 		
 		// Clears the screen
 		Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
@@ -85,9 +85,6 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		
 		// Draws the actual shiz in the screen
 		drawScreen(delta);
-		
-		// Draws the buttons over everything
-		renderEntries(batch);
 		
 		// Ends the drawing phase
 		batch.end();
@@ -207,7 +204,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		{
 			for (Vector2 touch : touches)
 			{
-				updateButtons(touch.add(xOffset, yOffset));// new Vector2(touch.x - xOffset, touch.y - yOffset)
+				updateButtons(touch.cpy().add(-xOffset, -yOffset));// new Vector2(touch.x - xOffset, touch.y - yOffset)
 			}
 		}
 	}

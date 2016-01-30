@@ -38,7 +38,7 @@ public class MainMenuGui extends GuiScreen
 		{
 			case 0:
 				game.setScreen(game.screenManager().playScreen);
-				//game.assets().dst.play();
+				// game.assets().dst.play();
 				break;
 		}
 	}

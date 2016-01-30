@@ -133,7 +133,7 @@ public class GuiButton implements IGuiButton, Renderable
 	{
 		return touchRadius;
 	}
-
+	
 	@Override
 	public void render(SpriteBatch batch, float xOffset, float yOffset)
 	{

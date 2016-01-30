@@ -7,10 +7,15 @@ import net.qwertysam.api.util.PhysicsUtil;
 
 public class Box2dDebugRenderer
 {
-	PhysicsScreen screen;
-	Box2DDebugRenderer debugRenderer;
-	Matrix4 debugMatrix;
+	private PhysicsScreen screen;
+	private Box2DDebugRenderer debugRenderer;
+	private Matrix4 debugMatrix;
 	
+	/**
+	 * Renders the outlines of physics bodies for debug.
+	 * 
+	 * @param screen the PhysicsScreen to apply this to.
+	 */
 	public Box2dDebugRenderer(PhysicsScreen screen)
 	{
 		this.screen = screen;
@@ -18,6 +23,9 @@ public class Box2dDebugRenderer
 		debugRenderer = new Box2DDebugRenderer();
 	}
 	
+	/**
+	 * Draws the Box2D debug.
+	 */
 	public void render()
 	{
 		debugMatrix = new Matrix4(screen.getCamera().combined);

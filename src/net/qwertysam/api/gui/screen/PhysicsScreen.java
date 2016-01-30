@@ -7,14 +7,19 @@ import box2dLight.RayHandler;
 import net.qwertysam.api.util.PhysicsUtil;
 import net.qwertysam.main.MyGdxGame;
 
-//@Deprecated
 public class PhysicsScreen extends GuiScreen
 {
 	protected World world;
 	protected RayHandler rayHandler;
 	private Box2dDebugRenderer debug;
+	private boolean enableDebug;
 	
 	public PhysicsScreen(MyGdxGame game)
+	{
+		this(game, false);
+	}
+	
+	public PhysicsScreen(MyGdxGame game, boolean enableDebug)
 	{
 		super(game);
 		
@@ -23,9 +28,10 @@ public class PhysicsScreen extends GuiScreen
 		world = new World(new Vector2(0, -9.8F), true);
 		
 		rayHandler = new RayHandler(world);
-		rayHandler.setBlurNum(0);
+		rayHandler.setBlurNum(1);
 		
 		debug = new Box2dDebugRenderer(this);
+		this.enableDebug = enableDebug;
 	}
 	
 	@Override
@@ -33,7 +39,11 @@ public class PhysicsScreen extends GuiScreen
 	{
 		super.render(delta);
 		rayHandler.render();
-		debug.render();
+		
+		// Draws the buttons over everything
+		renderEntries(batch);
+		
+		if (enableDebug) debug.render();
 	}
 	
 	@SuppressWarnings("deprecation")

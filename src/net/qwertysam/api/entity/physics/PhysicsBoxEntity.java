@@ -8,9 +8,6 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import net.qwertysam.api.util.PhysicsUtil;
 
-/**
- * An Entity with a square physics Body.
- */
 public class PhysicsBoxEntity extends PhysicsEntity
 {
 	/** The width of this in pixels. */

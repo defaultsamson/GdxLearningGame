@@ -35,7 +35,7 @@ public class MyGdxGame extends Game
 		registerDisposable(assets());
 		registerDisposable(screenManager());
 		
-		screenManager.switchScreen(screenManager.mainMenu);
+		screenManager.switchScreen(screenManager.playScreen);
 	}
 	
 	@Override

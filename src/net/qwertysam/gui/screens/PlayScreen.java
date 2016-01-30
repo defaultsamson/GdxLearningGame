@@ -7,6 +7,7 @@ import net.qwertysam.api.builder.LightBuilder;
 import net.qwertysam.api.entity.physics.PhysicsBoundsEntity;
 import net.qwertysam.api.entity.physics.PhysicsEntity;
 import net.qwertysam.api.entity.physics.PhysicsSpriteEntity;
+import net.qwertysam.api.gui.GuiButton;
 import net.qwertysam.api.gui.screen.PhysicsScreen;
 import net.qwertysam.api.rendering.RenderableHolder;
 import net.qwertysam.main.MyGdxGame;
@@ -24,26 +25,24 @@ public class PlayScreen extends PhysicsScreen
 	{
 		super(game);
 		
-		meme = new PhysicsSpriteEntity(0.5F, world, game.assets().kakchoke, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 65000F, 600F, 400F, false, true);
+		meme = new PhysicsSpriteEntity(0.5F, world, game.assets().kakchoke, 0.02F, 0.3F, 65000, 600, 400, false, true);
 		
-		worldBounds = new PhysicsBoundsEntity(world, 0F, 0F, game.assets().background.getWidth(), game.assets().background.getHeight());
+		worldBounds = new PhysicsBoundsEntity(world, 0, 0, game.assets().background.getWidth(), game.assets().background.getHeight());
 		
 		spriteEntities = new RenderableHolder<PhysicsSpriteEntity>();
 		
 		spriteEntities.registerEntry(meme);
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(2F, world, game.assets().potato, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 30000, 650, 0, false, true));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(3F, world, game.assets().bill, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 650, 0, false, true));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(2, world, game.assets().potato, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 30000, 650, 0, false, true));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(3, world, game.assets().bill, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 650, 0, false, true));
 		spriteEntities.registerEntry(new PhysicsSpriteEntity(world, game.assets().bob, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 650, 0, false, false));
 		spriteEntities.registerEntry(new PhysicsSpriteEntity(world, game.assets().bill_mad, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 650, 0, true, false));
 		spriteEntities.registerEntry(new PhysicsSpriteEntity(world, game.assets().arthur, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 20000, 650, 0, false, false));
 		
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(world, game.assets().bill_mad, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 20000F, 200, 700, true, false));
+		rayHandler.setAmbientLight(0.5F);
 		
-		rayHandler.setAmbientLight(1.5F);
-		
-		light = LightBuilder.createPointLight(rayHandler, 200, new Color(0F, 0F, 0F, 1F), 1000, 200, 200);
-		
-		light.setSoftnessLength(1.5F);
+		LightBuilder.createPointLight(rayHandler, 400, 1.5F, new Color(0F, 0F, 0F, 1F), 800, false, 200, 200);
+		LightBuilder.createPointLight(rayHandler, 400, 1.5F, Color.BLUE.add(Color.LIME).add(new Color(0F, 0F, 0F, 0.8F)), 800, false, 1500, 900);
+		LightBuilder.createPointLight(rayHandler, 400, 1.5F, Color.RED, 800, false, 1700, 200);
 		
 		// light.attachToBody(meme.getBody());
 		
@@ -51,6 +50,12 @@ public class PlayScreen extends PhysicsScreen
 		
 		// sun.setSoftnessLength(2);
 		// sun.setXray(true);
+	}
+	
+	@Override
+	public void init()
+	{
+		registerEntry(new GuiButton(this, 0, game.assets().button, 20, 20));
 	}
 	
 	@Override
@@ -114,6 +119,6 @@ public class PlayScreen extends PhysicsScreen
 		
 		camera.position.set(meme.getCenterX(), meme.getCenterY(), 0);
 		
-		rayHandler.render();
+		if (!touches.isEmpty()) game.assets().font.draw(batch, "" + (int) touches.get(0).x + ", " + (int) touches.get(0).y, 100, 200);
 	}
 }

@@ -27,7 +27,7 @@ public class Files implements IDisposable
 	{
 	
 	}
-
+	
 	public MyGdxGame getGame()
 	{
 		return game;
