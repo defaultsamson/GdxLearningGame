@@ -117,7 +117,7 @@ public class PlayScreen extends PhysicsScreen
 		spriteEntities.renderEntries(batch);
 		renderEntries(batch);
 		
-		camera.position.set(meme.getCenterX(), meme.getCenterY(), 0);
+		game.getCamera().position.set(meme.getCenterX(), meme.getCenterY(), 0);
 		
 		if (!touches.isEmpty()) game.assets().font.draw(batch, "" + (int) touches.get(0).x + ", " + (int) touches.get(0).y, 100, 200);
 	}

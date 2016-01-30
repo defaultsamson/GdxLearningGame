@@ -6,7 +6,6 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -26,8 +25,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	protected List<Vector2> touches;
 	
 	protected MyGdxGame game;
-	protected OrthographicCamera camera;
-	private Viewport viewport;
+	protected Viewport viewport;
 	protected SpriteBatch batch;
 	
 	/** The x offset of the buttons. */
@@ -44,10 +42,8 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		
 		this.game = game;
 		
-		camera = new OrthographicCamera();
-		camera.setToOrtho(game.isInverted(), 720, 1280);
-		
-		viewport = new FitViewport(720, 1280, camera);
+		game.getCamera().setToOrtho(game.isInverted(), MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT);
+		viewport = new FitViewport(MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT, game.getCamera());
 		
 		batch = new SpriteBatch();
 		
@@ -90,7 +86,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		batch.end();
 		
 		// Updates the camera
-		camera.update();
+		game.getCamera().update();
 	}
 	
 	@Override
@@ -109,7 +105,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 			}
 		}
 		
-		if (!isEmpty()) buttonTick(touches, camera.position.x - (camera.viewportWidth / 2), camera.position.y - (camera.viewportHeight / 2));
+		if (!isEmpty()) buttonTick(touches, game.getCamera().position.x - (game.getCamera().viewportWidth / 2), game.getCamera().position.y - (game.getCamera().viewportHeight / 2));
 	}
 	
 	@Override
@@ -123,6 +119,11 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	{
 		System.out.println("Resizing ViewPort: (" + width + ", " + height + ")");
 		viewport.update(width, height, true);
+		// game.getCamera().viewportHeight = height;
+		// game.getCamera().viewportWidth = width;
+		
+		// viewport = new FitViewport(MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT, game.getCamera());
+		// viewport.apply(true);
 	}
 	
 	@Override
@@ -151,17 +152,12 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	
 	public float getWidth()
 	{
-		return camera.viewportWidth;
+		return game.getCamera().viewportWidth;
 	}
 	
 	public float getHeight()
 	{
-		return camera.viewportHeight;
-	}
-	
-	public OrthographicCamera getCamera()
-	{
-		return camera;
+		return game.getCamera().viewportHeight;
 	}
 	
 	public SpriteBatch getBatch()

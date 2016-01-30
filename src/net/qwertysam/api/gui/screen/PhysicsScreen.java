@@ -55,7 +55,7 @@ public class PhysicsScreen extends GuiScreen
 		// Makes the world physics go
 		PhysicsUtil.stepWorld(world, delta);
 		
-		rayHandler.setCombinedMatrix(camera.combined.cpy().scale(PhysicsUtil.PIXELS_PER_METER, PhysicsUtil.PIXELS_PER_METER, PhysicsUtil.PIXELS_PER_METER));
+		rayHandler.setCombinedMatrix(game.getCamera().combined.cpy().scale(PhysicsUtil.PIXELS_PER_METER, PhysicsUtil.PIXELS_PER_METER, PhysicsUtil.PIXELS_PER_METER));
 		
 		rayHandler.update();
 	}
@@ -65,6 +65,13 @@ public class PhysicsScreen extends GuiScreen
 	{
 		super.dispose();
 		world.dispose();
+	}
+	
+	@Override
+	public void resize(int width, int height)
+	{
+		super.resize(width, height);
+		rayHandler.useCustomViewport(viewport.getScreenX(), viewport.getScreenY(), viewport.getScreenWidth(), viewport.getScreenHeight());
 	}
 	
 	@Override

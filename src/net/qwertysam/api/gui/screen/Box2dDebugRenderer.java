@@ -28,7 +28,7 @@ public class Box2dDebugRenderer
 	 */
 	public void render()
 	{
-		debugMatrix = new Matrix4(screen.getCamera().combined);
+		debugMatrix = new Matrix4(screen.getGame().getCamera().combined);
 		// Scale it by 100 as our box physics bodies are scaled down by 100
 		debugMatrix.scale(PhysicsUtil.PIXELS_PER_METER, PhysicsUtil.PIXELS_PER_METER, 1f);
 		
