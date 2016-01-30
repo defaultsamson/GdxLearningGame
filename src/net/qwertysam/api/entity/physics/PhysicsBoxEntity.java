@@ -11,7 +11,7 @@ import net.qwertysam.api.util.PhysicsUtil;
 /**
  * An Entity with a square physics Body.
  */
-@Deprecated
+//@Deprecated
 public class PhysicsBoxEntity extends PhysicsEntity
 {
 	/** The width of this in pixels. */
@@ -22,240 +22,6 @@ public class PhysicsBoxEntity extends PhysicsEntity
 	/**
 	 * An Entity with a square physics Body.
 	 * 
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 */
-	public PhysicsBoxEntity(World world, float mass, float width, float height)
-	{
-		this(DEFAULT_FRICTION, world, mass, 0F, 0F, width, height, IS_STATIC_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param x the x ordinate of this in pixels
-	 * @param y the y ordinate of this in pixels
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 */
-	public PhysicsBoxEntity(World world, float mass, float x, float y, float width, float height)
-	{
-		this(DEFAULT_FRICTION, world, mass, x, y, width, height, IS_STATIC_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 */
-	public PhysicsBoxEntity(World world, float mass, float width, float height, boolean isStatic)
-	{
-		this(DEFAULT_FRICTION, world, mass, 0F, 0F, width, height, isStatic);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 * @param canRotate if this is capable of rotating
-	 */
-	public PhysicsBoxEntity(World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
-	{
-		this(DEFAULT_FRICTION, DEFAULT_RESTITUTION, world, mass, 0F, 0F, width, height, isStatic, canRotate);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param x the x ordinate of this in pixels
-	 * @param y the y ordinate of this in pixels
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 */
-	public PhysicsBoxEntity(World world, float mass, float x, float y, float width, float height, boolean isStatic)
-	{
-		this(DEFAULT_FRICTION, world, mass, x, y, width, height, isStatic);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 */
-	public PhysicsBoxEntity(float friction, World world, float mass, float width, float height)
-	{
-		this(friction, world, mass, 0F, 0F, width, height, IS_STATIC_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param x the x ordinate of this in pixels
-	 * @param y the y ordinate of this in pixels
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 */
-	public PhysicsBoxEntity(float friction, World world, float mass, float x, float y, float width, float height)
-	{
-		this(friction, world, mass, x, y, width, height, IS_STATIC_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 */
-	public PhysicsBoxEntity(float friction, World world, float mass, float width, float height, boolean isStatic)
-	{
-		this(friction, world, mass, 0F, 0F, width, height, isStatic);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 * @param canRotate if this is capable of rotating
-	 */
-	public PhysicsBoxEntity(float friction, World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
-	{
-		this(friction, DEFAULT_RESTITUTION, world, mass, 0F, 0F, width, height, isStatic, canRotate);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param x the x ordinate of this in pixels
-	 * @param y the y ordinate of this in pixels
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 */
-	public PhysicsBoxEntity(float friction, World world, float mass, float x, float y, float width, float height, boolean isStatic)
-	{
-		this(friction, DEFAULT_RESTITUTION, world, mass, x, y, width, height, isStatic, CAN_ROTATE_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param restitution the restitution for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 */
-	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float width, float height)
-	{
-		this(friction, restitution, world, mass, 0F, 0F, width, height, IS_STATIC_DEFAULT, CAN_ROTATE_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param restitution the restitution for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param x the x ordinate of this in pixels
-	 * @param y the y ordinate of this in pixels
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 */
-	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height)
-	{
-		this(friction, restitution, world, mass, x, y, width, height, IS_STATIC_DEFAULT, CAN_ROTATE_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param restitution the restitution for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 */
-	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float width, float height, boolean isStatic)
-	{
-		this(friction, restitution, world, mass, 0F, 0F, width, height, isStatic, CAN_ROTATE_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param restitution the restitution for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 * @param canRotate if this is capable of rotating
-	 */
-	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float width, float height, boolean isStatic, boolean canRotate)
-	{
-		this(friction, restitution, world, mass, 0F, 0F, width, height, isStatic, canRotate);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
-	 * @param friction the coefficient of friction for this
-	 * @param restitution the restitution for this
-	 * @param world the physics world that is in
-	 * @param mass the mass of this in grams
-	 * @param x the x ordinate of this in pixels
-	 * @param y the y ordinate of this in pixels
-	 * @param width the width of this in pixels
-	 * @param height the height of this in pixels
-	 * @param isStatic if this is capable of having motion
-	 */
-	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic)
-	{
-		this(friction, restitution, world, mass, x, y, width, height, isStatic, CAN_ROTATE_DEFAULT);
-	}
-	
-	/**
-	 * An Entity with a square physics Body.
-	 * 
 	 * @param friction the coefficient of friction for this
 	 * @param restitution the restitution for this
 	 * @param world the physics world that is in
@@ -267,9 +33,9 @@ public class PhysicsBoxEntity extends PhysicsEntity
 	 * @param isStatic if this is capable of having motion
 	 * @param canRotate if this is capable of rotating
 	 */
-	public PhysicsBoxEntity(float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
+	public PhysicsBoxEntity(World world, float friction, float restitution, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
 	{
-		super(createBoxBody(friction, restitution, world, mass, x, y, width, height, isStatic, canRotate));
+		super(createBoxBody(world, friction, restitution, mass, x, y, width, height, isStatic, canRotate));
 		
 		this.width = width;
 		this.height = height;
@@ -287,7 +53,7 @@ public class PhysicsBoxEntity extends PhysicsEntity
 	 * @param canRotate if the physics body is capable of rotating
 	 * @return a physics Body with the specified parameters.
 	 */
-	private static Body createBoxBody(float friction, float restitution, World world, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
+	private static Body createBoxBody(World world, float friction, float restitution, float mass, float x, float y, float width, float height, boolean isStatic, boolean canRotate)
 	{
 		// Defines the physics object in the simulation
 		BodyDef bodyDef = new BodyDef();

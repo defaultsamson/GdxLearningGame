@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import net.qwertysam.api.util.IDisposable;
 import net.qwertysam.main.MyGdxGame;
 
-public class AssetLoader implements IDisposable
+public abstract class AssetLoader implements IDisposable
 {
 	protected MyGdxGame game;
 	protected final AssetManager manager;
@@ -42,8 +42,7 @@ public class AssetLoader implements IDisposable
 	/**
 	 * Queues all the assets to be loaded by the manager.
 	 */
-	public void queueLoad()
-	{}
+	protected abstract void queueLoad();
 	
 	public void load()
 	{

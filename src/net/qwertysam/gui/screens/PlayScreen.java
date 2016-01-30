@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import box2dLight.PointLight;
 import net.qwertysam.api.builder.LightBuilder;
 import net.qwertysam.api.entity.physics.PhysicsBoundsEntity;
+import net.qwertysam.api.entity.physics.PhysicsEntity;
 import net.qwertysam.api.entity.physics.PhysicsSpriteEntity;
 import net.qwertysam.api.gui.screen.PhysicsScreen;
 import net.qwertysam.api.rendering.RenderableHolder;
@@ -23,18 +24,20 @@ public class PlayScreen extends PhysicsScreen
 	{
 		super(game);
 		
-		spriteEntities = new RenderableHolder<PhysicsSpriteEntity>();
-		
-		meme = new PhysicsSpriteEntity(game.assets().kakchoke, world, 65000F, 600, 400, false, true);
+		meme = new PhysicsSpriteEntity(0.5F, world, game.assets().kakchoke, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 65000F, 600F, 400F, false, true);
 		
 		worldBounds = new PhysicsBoundsEntity(world, 0F, 0F, game.assets().background.getWidth(), game.assets().background.getHeight());
 		
+		spriteEntities = new RenderableHolder<PhysicsSpriteEntity>();
+		
 		spriteEntities.registerEntry(meme);
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(2F, game.assets().potato, world, 30000F, 650, 0));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(3F, game.assets().bill, world, 15000F, 650, 0));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(game.assets().bob, world, 15000F, 650, 0));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(game.assets().bill_mad, world, 15000F, 650, 0));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(game.assets().arthur, world, 20000F, 650, 0));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(2F, world, game.assets().potato, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 30000F, 650F, 0F, false, true));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(3F, world, game.assets().bill, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000F, 650F, 0F, false, true));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(world, game.assets().bob, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000F, 650F, 0F, false, false));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(world, game.assets().bill_mad, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000F, 650F, 0F, true, false));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(world, game.assets().arthur, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 20000F, 650F, 0F, false, false));
+		
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(world, game.assets().bill_mad, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 20000F, 200, 700, true, false));
 		
 		rayHandler.setAmbientLight(1.5F);
 		

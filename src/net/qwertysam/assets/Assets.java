@@ -35,19 +35,21 @@ public class Assets extends AssetLoader
 	 * Queues all the assets to be loaded by the manager.
 	 */
 	@Override
-	public void queueLoad()
+	protected void queueLoad()
 	{
 		// All the assets to be loaded.
 		addAsset(new Asset("kakchoke", "meme/kak2.png", Texture.class));
 		addAsset(new Asset("button", "buttons/button1.png", Texture.class));
 		addAsset(new Asset("background", "menu/windows.png", Texture.class));
-		addAsset(new Asset("arthur", "meme/1.jpg", Texture.class));
+		addAsset(new Asset("arthur", "meme/4.jpg", Texture.class));
 		addAsset(new Asset("potato", "meme/3.jpg", Texture.class));
 		addAsset(new Asset("bob", "entity/bob.png", Texture.class));
 		addAsset(new Asset("bill", "entity/bill.png", Texture.class));
 		addAsset(new Asset("bill_mad", "entity/bill_mad.png", Texture.class));
 		addAsset(new Asset("dst", "sound/sauce.mp3", Sound.class));
 		addAsset(new Asset("font", "fonts/font1.ttf", FreeTypeFontGenerator.class));
+		
+		System.out.println(assets.size());
 		
 		for (Asset asset : assets)
 		{

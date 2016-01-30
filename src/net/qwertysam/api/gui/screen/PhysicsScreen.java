@@ -7,11 +7,12 @@ import box2dLight.RayHandler;
 import net.qwertysam.api.util.PhysicsUtil;
 import net.qwertysam.main.MyGdxGame;
 
-@Deprecated
+//@Deprecated
 public class PhysicsScreen extends GuiScreen
 {
 	protected World world;
 	protected RayHandler rayHandler;
+	private Box2dDebugRenderer debug;
 	
 	public PhysicsScreen(MyGdxGame game)
 	{
@@ -23,6 +24,8 @@ public class PhysicsScreen extends GuiScreen
 		
 		rayHandler = new RayHandler(world);
 		rayHandler.setBlurNum(0);
+		
+		debug = new Box2dDebugRenderer(this);
 	}
 	
 	@Override
@@ -30,9 +33,9 @@ public class PhysicsScreen extends GuiScreen
 	{
 		super.render(delta);
 		rayHandler.render();
+		debug.render();
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void tick(float delta)
 	{
