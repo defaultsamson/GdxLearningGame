@@ -209,6 +209,16 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		}
 	}
 	
+	/**
+	 * Operates in the same way as renderEntries(SpriteBatch batch);
+	 * 
+	 * @param batch the SpriteBatch to draw the buttons to
+	 */
+	public void renderButtons(SpriteBatch batch)
+	{
+		renderEntries(batch);
+	}
+	
 	@Override
 	public void renderEntries(SpriteBatch batch)
 	{
