@@ -4,12 +4,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import box2dLight.RayHandler;
+import net.qwertysam.api.rendering.Box2dDebugRenderer;
 import net.qwertysam.api.util.PhysicsUtil;
 import net.qwertysam.main.MyGdxGame;
 
-public class PhysicsScreen extends GuiScreen
+public abstract class PhysicsScreen extends GuiScreen
 {
-	protected World world;
+	private World world;
 	protected RayHandler rayHandler;
 	private Box2dDebugRenderer debug;
 	private boolean enableDebug;
@@ -25,9 +26,9 @@ public class PhysicsScreen extends GuiScreen
 		
 		// Create a physics world, the heart of the simulation. The Vector
 		// passed in is gravity
-		world = new World(new Vector2(0, -9.8F), true);
+		world = new World(new Vector2(0, -9.81F), true);
 		
-		rayHandler = new RayHandler(world);
+		rayHandler = new RayHandler(getWorld());
 		rayHandler.setBlurNum(1);
 		
 		debug = new Box2dDebugRenderer(this);
@@ -53,7 +54,7 @@ public class PhysicsScreen extends GuiScreen
 		super.tick(delta);
 		
 		// Makes the world physics go
-		PhysicsUtil.stepWorld(world, delta);
+		PhysicsUtil.stepWorld(getWorld(), delta);
 		
 		rayHandler.setCombinedMatrix(game.getCamera().combined.cpy().scale(PhysicsUtil.PIXELS_PER_METER, PhysicsUtil.PIXELS_PER_METER, PhysicsUtil.PIXELS_PER_METER));
 		
@@ -64,7 +65,7 @@ public class PhysicsScreen extends GuiScreen
 	public void dispose()
 	{
 		super.dispose();
-		world.dispose();
+		getWorld().dispose();
 	}
 	
 	@Override
@@ -75,10 +76,13 @@ public class PhysicsScreen extends GuiScreen
 	}
 	
 	@Override
-	public void pressAction(int buttonID)
-	{}
+	public abstract void pressAction(int buttonID);
 	
 	@Override
-	public void releaseAction(int buttonID)
-	{}
+	public abstract void releaseAction(int buttonID);
+	
+	public World getWorld()
+	{
+		return world;
+	}
 }

@@ -5,12 +5,24 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract interface Renderable
 {
+	/**
+	 * @return the Sprite for this.
+	 */
 	public abstract Sprite getSprite();
 	
+	/**
+	 * @return the x ordinate of this.
+	 */
 	public abstract float getX();
 	
+	/**
+	 * @return the y ordinate of this.
+	 */
 	public abstract float getY();
 	
+	/**
+	 * @return the rotation of this.
+	 */
 	public abstract float getRotation();
 	
 	/**

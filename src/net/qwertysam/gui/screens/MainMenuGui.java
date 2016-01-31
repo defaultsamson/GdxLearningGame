@@ -14,15 +14,16 @@ public class MainMenuGui extends GuiScreen
 	@Override
 	public void init()
 	{
-		registerEntry(new GuiButton(this, 0, game.assets().button, 200, 200));
+		registerEntry(new GuiButton(this, game.assets().button, 1F, 0, 200, 200, 30, 50));
 	}
 	
 	@Override
 	public void drawScreen(float delta)
 	{
+		game.centerCamera();
 		batch.draw(game.assets().background, 0, 0);
 		
-		game.assets().font.draw(batch, "" + touches.size(), 100, 200);
+		game.assets().font.draw(batch, "" + getTouches().size(), 100, 200);
 		
 		renderButtons(batch);
 	}

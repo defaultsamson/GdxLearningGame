@@ -17,14 +17,17 @@ import net.qwertysam.api.assets.AssetLoader;
 
 public class AssetBuilder
 {
+	/** The default method for texture resize and rotation filtering. */
 	public static final TextureFilter DEFAULT_TEXTURE_FILTER = TextureFilter.Nearest;
+	/** The default method for font resize and rotation filtering. */
 	public static final TextureFilter DEFAULT_FONT_FILTER = TextureFilter.Linear;
+	/** The default font colour. */
 	public static final Color DEFAULT_FONT_COLOUR = Color.WHITE;
 	
 	/**
 	 * Creates a sprite from a loaded image in an AssetManager.
 	 * 
-	 * @param assets the Assets instance
+	 * @param assets the AssetLoader instance
 	 * @param key the key of the asset
 	 * @return a sprite from a loaded image.
 	 */
@@ -55,7 +58,7 @@ public class AssetBuilder
 	 * <p>
 	 * The image must be a sprite sheet.
 	 * 
-	 * @param assets the Assets instance
+	 * @param assets the AssetLoader instance
 	 * @param key the key of the asset
 	 * @param size the width of each sprite in pixels
 	 * @return a List of sprites from a loaded image.
@@ -70,7 +73,7 @@ public class AssetBuilder
 	 * <p>
 	 * The image must be a sprite sheet.
 	 * 
-	 * @param assets the Assets instance
+	 * @param assets the AssetLoader instance
 	 * @param key the key of the asset
 	 * @param xSize the width of each sprite in pixels
 	 * @param ySize the height of each sprite in pixels
@@ -113,7 +116,7 @@ public class AssetBuilder
 	/**
 	 * Creates a font from a TrueTypeFont file in an AssetManager.
 	 * 
-	 * @param assets the Assets instance
+	 * @param assets the AssetLoader instance
 	 * @param path the path to the TrueTypeFont file
 	 * @param size the size of the font
 	 * @return a font from a loaded TrueTypeFont file.
@@ -126,7 +129,7 @@ public class AssetBuilder
 	/**
 	 * Creates a font from a TrueTypeFont file in an AssetManager.
 	 * 
-	 * @param assets the Assets instance
+	 * @param assets the AssetLoader instance
 	 * @param path the path to the TrueTypeFont file
 	 * @param colour the colour of the font
 	 * @param size the size of the font
@@ -163,7 +166,7 @@ public class AssetBuilder
 	/**
 	 * Creates a sound from a file in an AssetManager.
 	 * 
-	 * @param assets the Assets instance
+	 * @param assets the AssetLoader instance
 	 * @param key the key of the asset
 	 * @return a sound from a loaded file.
 	 */
@@ -183,6 +186,12 @@ public class AssetBuilder
 		}
 	}
 	
+	/**
+	 * Sends the incorrect type error message.
+	 * 
+	 * @param asset the asset of the incorrect type which was attempted to be loaded
+	 * @param requiredType the required type to be loaded from that method
+	 */
 	private static void incorrectType(Asset asset, Class<?> requiredType)
 	{
 		System.out.println("Asset attempted to be loaded is the incorrect type.");

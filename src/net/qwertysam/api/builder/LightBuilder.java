@@ -10,8 +10,11 @@ import net.qwertysam.api.util.PhysicsUtil;
 
 public class LightBuilder
 {
+	/** The default value for x-ray. */
 	public static final boolean DEFAULT_XRAY = false;
-	public static final float DEFAULT_SOFTNESS = 2F;
+	/** The default softness of a light's edge. */
+	public static final float DEFAULT_SOFTNESS = 1F;
+	/** The default amount of rays to calculate for. */
 	public static final int DEFAULT_RAYS = 200;
 	
 	/**

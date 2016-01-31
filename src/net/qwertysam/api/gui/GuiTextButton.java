@@ -20,6 +20,6 @@ public class GuiTextButton extends GuiButton
 	
 	public GuiTextButton(GuiScreen screen, int id, List<Sprite> sprites, float x, float y, float touchRadius, float rotation)
 	{
-		super(screen, id, sprites, x, y, touchRadius, rotation);
+		super(screen, sprites, 1F, id, x, y, touchRadius, rotation);
 	}
 }

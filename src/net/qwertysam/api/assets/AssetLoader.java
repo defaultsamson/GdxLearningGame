@@ -83,8 +83,7 @@ public abstract class AssetLoader implements IDisposable
 	/**
 	 * Loads all the to their variables.
 	 */
-	public void initialize()
-	{}
+	public abstract void initialize();
 	
 	/**
 	 * Adds an asset to be loaded.
@@ -116,6 +115,7 @@ public abstract class AssetLoader implements IDisposable
 	public void dispose()
 	{
 		manager.dispose();
+		assets.clear();
 	}
 	
 	/**

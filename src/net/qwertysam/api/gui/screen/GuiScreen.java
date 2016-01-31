@@ -22,7 +22,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	public static final int MAX_TOUCHES = 4; // Typically hardware limit is 10
 	
 	private boolean isTouched;
-	protected List<Vector2> touches;
+	private List<Vector2> touches;
 	
 	protected MyGdxGame game;
 	protected Viewport viewport;
@@ -73,7 +73,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		batch.setProjectionMatrix(viewport.getCamera().combined);
 		
 		// Clears the screen
-		Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
+		Gdx.gl.glClearColor(0F, 0F, 0F, 1F);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		// Begins the drawing phase
@@ -111,7 +111,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	@Override
 	public void drawScreen(float delta)
 	{
-	
+		
 	}
 	
 	@Override
@@ -148,6 +148,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	public void dispose()
 	{
 		batch.dispose();
+		touches.clear();
 	}
 	
 	public float getWidth()

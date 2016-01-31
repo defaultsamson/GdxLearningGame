@@ -8,10 +8,6 @@ import net.qwertysam.api.util.PhysicsUtil;
 
 public class PhysicsEntity
 {
-	/** If entities can rotate by default. */
-	public static final boolean CAN_ROTATE_DEFAULT = true;
-	/** If entities are static by default. */
-	public static final boolean IS_STATIC_DEFAULT = false;
 	/** The default coefficient of friction for Entities. */
 	public static final float DEFAULT_FRICTION = 0.1F;
 	/** The default elasticity for Entities. */

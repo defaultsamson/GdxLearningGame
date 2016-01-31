@@ -1,8 +1,9 @@
-package net.qwertysam.api.gui.screen;
+package net.qwertysam.api.rendering;
 
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
+import net.qwertysam.api.gui.screen.PhysicsScreen;
 import net.qwertysam.api.util.PhysicsUtil;
 
 public class Box2dDebugRenderer
@@ -32,9 +33,9 @@ public class Box2dDebugRenderer
 		// Scale it by 100 as our box physics bodies are scaled down by 100
 		debugMatrix.scale(PhysicsUtil.PIXELS_PER_METER, PhysicsUtil.PIXELS_PER_METER, 1f);
 		
-		screen.batch.begin();
+		screen.getBatch().begin();
 		// BoxObjectManager.GetWorld() gets the reference to Box2d World object
-		debugRenderer.render(screen.world, debugMatrix);
-		screen.batch.end();
+		debugRenderer.render(screen.getWorld(), debugMatrix);
+		screen.getBatch().end();
 	}
 }

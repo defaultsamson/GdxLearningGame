@@ -12,40 +12,8 @@ import net.qwertysam.api.util.PhysicsUtil;
 
 public class PhysicsBoundsEntity extends PhysicsEntity
 {
-	/** If BoundsEntities are static by default. */
-	public static final boolean IS_STATIC_DEFAULT = true;
-	
 	/** The specified ordinate for this. */
 	private float x1, y1, x2, y2;
-	
-	/**
-	 * Invisible walls in the shape of a box.
-	 * 
-	 * @param world the physics world that is in
-	 * @param x1 the first x ordinate
-	 * @param y1 the first y ordinate
-	 * @param x2 the seconds x ordinate
-	 * @param y2 the seconds y ordinate
-	 */
-	public PhysicsBoundsEntity(World world, float x1, float y1, float x2, float y2)
-	{
-		this(world, x1, y1, x2, y2, IS_STATIC_DEFAULT);
-	}
-	
-	/**
-	 * Invisible walls in the shape of a box.
-	 * 
-	 * @param world the physics world that is in
-	 * @param x1 the first x ordinate
-	 * @param y1 the first y ordinate
-	 * @param x2 the seconds x ordinate
-	 * @param y2 the seconds y ordinate
-	 * @param isStatic if this is capable of having motion
-	 */
-	public PhysicsBoundsEntity(World world, float x1, float y1, float x2, float y2, boolean isStatic)
-	{
-		this(world, x1, y1, x2, y2, isStatic, CAN_ROTATE_DEFAULT);
-	}
 	
 	/**
 	 * Invisible walls in the shape of a box.
