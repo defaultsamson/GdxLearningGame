@@ -4,6 +4,7 @@ import net.qwertysam.api.gui.GuiButton;
 import net.qwertysam.api.gui.GuiTextButton;
 import net.qwertysam.api.gui.screen.GuiScreen;
 import net.qwertysam.api.language.TranslationKey;
+import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.main.MyGdxGame;
 
 public class MainMenuGui extends GuiScreen
@@ -32,6 +33,8 @@ public class MainMenuGui extends GuiScreen
 		game.assets().font_normal.draw(batch, "" + getTouches().size(), 100, 200);
 		
 		renderButtons(batch);
+		
+		RenderUtil.drawVignette(batch, game);
 	}
 	
 	@Override

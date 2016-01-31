@@ -36,6 +36,7 @@ public class Assets extends AssetLoader
 	public BitmapFont font_normal;
 	public BitmapFont font_italic;
 	public BitmapFont font_bold;
+	public Sprite vignette;
 	
 	/**
 	 * Queues all the assets to be loaded by the manager.
@@ -60,6 +61,7 @@ public class Assets extends AssetLoader
 		addAsset(new Asset("font_normal", "fonts/Ubuntu-L.ttf", FreeTypeFontGenerator.class));
 		addAsset(new Asset("font_italic", "fonts/Ubuntu-LI.ttf", FreeTypeFontGenerator.class));
 		addAsset(new Asset("font_bold", "fonts/Ubuntu-R.ttf", FreeTypeFontGenerator.class));
+		addAsset(new Asset("vignette", "textures/vignette.png", Texture.class));
 	}
 	
 	/**
@@ -84,6 +86,7 @@ public class Assets extends AssetLoader
 		font_normal = AssetBuilder.createFont(this, "font_normal", 128);
 		font_italic = AssetBuilder.createFont(this, "font_italic", 128);
 		font_bold = AssetBuilder.createFont(this, "font_bold", 128);
+		vignette = AssetBuilder.createSprite(this, "vignette");
 	}
 	
 	@Override

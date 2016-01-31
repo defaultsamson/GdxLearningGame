@@ -5,8 +5,15 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import net.qwertysam.main.MyGdxGame;
+
 public class RenderUtil
 {
+	public static void drawSprite(SpriteBatch batch, Sprite sprite, float x, float y, float rotation)
+	{
+		drawSprite(batch, sprite, x, y, 0F, 0F, rotation);
+	}
+	
 	public static void drawSprite(SpriteBatch batch, Sprite sprite, float x, float y, float xOffset, float yOffset, float rotation)
 	{
 		batch.draw(sprite, x + xOffset, y + yOffset, sprite.getOriginX() + xOffset, sprite.getOriginY() + yOffset, sprite.getWidth(), sprite.getHeight(), sprite.getScaleX(), sprite.getScaleY(), rotation);
@@ -26,5 +33,10 @@ public class RenderUtil
 		float width = lay.width;
 		
 		font.draw(batch, lay, x + xOffset - (width / 2), y + yOffset + height - (height / 2));
+	}
+	
+	public static void drawVignette(SpriteBatch batch, MyGdxGame game)
+	{
+		batch.draw(game.assets().vignette, -250, -500, MyGdxGame.CAMERA_WIDTH + 500, MyGdxGame.CAMERA_HEIGHT + 1000);
 	}
 }
