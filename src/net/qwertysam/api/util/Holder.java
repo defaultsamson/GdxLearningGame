@@ -57,6 +57,14 @@ public class Holder<T> implements IDisposable
 	@Override
 	public void dispose()
 	{
+		for (T entry : entries)
+		{
+			if (entry instanceof IDisposable)
+			{
+				((IDisposable) entry).dispose();
+			}
+		}
+		
 		entries.clear();
 	}
 }

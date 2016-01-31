@@ -3,6 +3,7 @@ package net.qwertysam.gui.screens;
 import net.qwertysam.api.gui.GuiButton;
 import net.qwertysam.api.gui.GuiTextButton;
 import net.qwertysam.api.gui.screen.GuiScreen;
+import net.qwertysam.api.language.TranslationKey;
 import net.qwertysam.main.MyGdxGame;
 
 public class MainMenuGui extends GuiScreen
@@ -17,7 +18,7 @@ public class MainMenuGui extends GuiScreen
 	@Override
 	public void init()
 	{
-		playButton = new GuiTextButton(this, game.assets().button_small, game.assets().font_bold, 8F, 0, 40, 1000, 50, 50, "Saucy");
+		playButton = new GuiTextButton(this, game.assets().button_small, game.assets().font_bold, 8F, 0, 40, 1000, 0, 50, TranslationKey.GUI_BUTTON_PLAY.translate(game));
 		registerEntry(new GuiButton(this, game.assets().button_square, 4F, 1, 100, 100, 0, 0));
 		registerEntry(playButton);
 	}

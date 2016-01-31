@@ -7,9 +7,12 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import net.qwertysam.api.gui.screen.ScreenManager;
+import net.qwertysam.api.language.Language;
+import net.qwertysam.api.language.TranslationManager;
 import net.qwertysam.api.util.IDisposable;
 import net.qwertysam.assets.Assets;
 import net.qwertysam.assets.Files;
+import net.qwertysam.language.GameTranslations;
 
 public class MyGdxGame extends Game
 {
@@ -26,6 +29,8 @@ public class MyGdxGame extends Game
 	private Files files;
 	private ScreenManager screenManager;
 	private OrthographicCamera camera;
+	private Language language;
+	private TranslationManager translator;
 	
 	@Override
 	public void create()
@@ -39,6 +44,12 @@ public class MyGdxGame extends Game
 		
 		files = new Files(this);
 		registerDisposable(files);
+		
+		translator = new GameTranslations(this);
+		registerDisposable(translator);
+		
+		// TODO make language selector
+		language = Language.FRENCH;
 		
 		// MUST INSTANCIATE CAMERA BEFORE SCREEN MANAGER
 		camera = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
@@ -111,10 +122,26 @@ public class MyGdxGame extends Game
 	}
 	
 	/**
-	 * Brings the camera to the center of the screen.
+	 * Brings the camera to the centre of the screen.
 	 */
 	public void centerCamera()
 	{
 		getCamera().setToOrtho(isInverted(), CAMERA_WIDTH, CAMERA_HEIGHT);;
+	}
+	
+	/**
+	 * @return the selected language.
+	 */
+	public Language getLanguage()
+	{
+		return language;
+	}
+	
+	/**
+	 * @return the TranslationManager instance.
+	 */
+	public TranslationManager getTranslator()
+	{
+		return translator;
 	}
 }
