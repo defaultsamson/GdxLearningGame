@@ -37,6 +37,11 @@ public class RenderUtil
 	
 	public static void drawVignette(SpriteBatch batch, MyGdxGame game)
 	{
-		batch.draw(game.assets().vignette, -250, -500, MyGdxGame.CAMERA_WIDTH + 500, MyGdxGame.CAMERA_HEIGHT + 1000);
+		drawVignette(batch, game, 0F, 0F);
+	}
+	
+	public static void drawVignette(SpriteBatch batch, MyGdxGame game, float xOffset, float yOffset)
+	{
+		batch.draw(game.assets().vignette, -250 + xOffset, -500 + yOffset, MyGdxGame.CAMERA_WIDTH + 500, MyGdxGame.CAMERA_HEIGHT + 1000);
 	}
 }

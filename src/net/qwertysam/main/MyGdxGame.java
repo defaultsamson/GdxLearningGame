@@ -49,7 +49,7 @@ public class MyGdxGame extends Game
 		registerDisposable(translator);
 		
 		// TODO make language selector
-		language = Language.FRENCH;
+		language = Language.ENGLISH;
 		
 		// MUST INSTANCIATE CAMERA BEFORE SCREEN MANAGER
 		camera = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);

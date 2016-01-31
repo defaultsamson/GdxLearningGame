@@ -4,7 +4,9 @@ import net.qwertysam.main.MyGdxGame;
 
 public enum TranslationKey
 {
-	GUI_BUTTON_PLAY;
+	GUI_BUTTON_PLAY,
+	GUI_BUTTON_OPTIONS,
+	GUI_BUTTON_HELP;
 	
 	public String translate(MyGdxGame game)
 	{

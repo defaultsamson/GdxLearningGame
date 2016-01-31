@@ -57,9 +57,9 @@ public class GuiButton extends TouchableArea implements Renderable
 		spriteX = x + ((sprites.get(0).getWidth() * (scale - 1F)) / 2);
 		spriteY = y + ((sprites.get(0).getHeight() * (scale - 1F)) / 2);
 		
-		normal = sprites.get(0);
+		normal = new Sprite(sprites.get(0));
 		normal.scale(scale - 1F);
-		depressed = sprites.get(1);
+		depressed = new Sprite(sprites.get(1));
 		depressed.scale(scale - 1F);
 	}
 	

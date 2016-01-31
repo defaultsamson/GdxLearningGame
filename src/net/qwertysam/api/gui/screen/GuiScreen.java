@@ -73,7 +73,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		batch.setProjectionMatrix(viewport.getCamera().combined);
 		
 		// Clears the screen
-		Gdx.gl.glClearColor(0F, 0F, 0F, 1F);
+		Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		// Begins the drawing phase

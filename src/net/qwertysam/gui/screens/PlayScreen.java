@@ -9,6 +9,7 @@ import net.qwertysam.api.entity.physics.PhysicsEntity;
 import net.qwertysam.api.entity.physics.PhysicsSpriteEntity;
 import net.qwertysam.api.gui.GuiButton;
 import net.qwertysam.api.gui.screen.PhysicsScreen;
+import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.api.rendering.RenderableHolder;
 import net.qwertysam.main.MyGdxGame;
 
@@ -117,9 +118,15 @@ public class PlayScreen extends PhysicsScreen
 		spriteEntities.renderEntries(batch);
 		renderEntries(batch);
 		
+		float cameraXOffset = game.getCamera().position.x - (getWidth() / 2);
+		float cameraYOffset = game.getCamera().position.y - (getHeight() / 2);
+		RenderUtil.drawVignette(batch, game, cameraXOffset, cameraYOffset);
+		
 		game.getCamera().position.set(meme.getCenterX(), meme.getCenterY(), 0);
 		
 		if (!getTouches().isEmpty()) game.assets().font_normal.draw(batch, "" + (int) getTouches().get(0).x + ", " + (int) getTouches().get(0).y, 100, 200);
+		
+		
 	}
 	
 	@Override
