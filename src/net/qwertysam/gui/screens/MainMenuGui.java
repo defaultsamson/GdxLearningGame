@@ -1,6 +1,7 @@
 package net.qwertysam.gui.screens;
 
 import net.qwertysam.api.gui.GuiButton;
+import net.qwertysam.api.gui.GuiTextButton;
 import net.qwertysam.api.gui.screen.GuiScreen;
 import net.qwertysam.main.MyGdxGame;
 
@@ -11,10 +12,14 @@ public class MainMenuGui extends GuiScreen
 		super(game);
 	}
 	
+	GuiButton playButton;
+	
 	@Override
 	public void init()
 	{
-		registerEntry(new GuiButton(this, game.assets().button, 1F, 0, 200, 200, 30, 50));
+		playButton = new GuiTextButton(this, game.assets().button_small, game.assets().font_bold, 8F, 0, 40, 1000, 0, 50, "Saucy");
+		registerEntry(new GuiButton(this, game.assets().button_square, 4F, 1, 100, 100, 0, 0));
+		registerEntry(playButton);
 	}
 	
 	@Override
@@ -23,7 +28,7 @@ public class MainMenuGui extends GuiScreen
 		game.centerCamera();
 		batch.draw(game.assets().background, 0, 0);
 		
-		game.assets().font.draw(batch, "" + getTouches().size(), 100, 200);
+		game.assets().font_normal.draw(batch, "" + getTouches().size(), 100, 200);
 		
 		renderButtons(batch);
 	}

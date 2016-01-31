@@ -22,6 +22,10 @@ public class Assets extends AssetLoader
 	
 	public Sprite kakchoke;
 	public List<Sprite> button;
+	public List<Sprite> button_large;
+	public List<Sprite> button_medium;
+	public List<Sprite> button_small;
+	public List<Sprite> button_square;
 	public Sprite background;
 	public Sprite arthur;
 	public Sprite potato;
@@ -29,7 +33,9 @@ public class Assets extends AssetLoader
 	public Sprite bill;
 	public Sprite bill_mad;
 	public Sound dst;
-	public BitmapFont font;
+	public BitmapFont font_normal;
+	public BitmapFont font_italic;
+	public BitmapFont font_bold;
 	
 	/**
 	 * Queues all the assets to be loaded by the manager.
@@ -40,6 +46,10 @@ public class Assets extends AssetLoader
 		// All the assets to be loaded.
 		addAsset(new Asset("kakchoke", "meme/kak2.png", Texture.class));
 		addAsset(new Asset("button", "buttons/button1.png", Texture.class));
+		addAsset(new Asset("button_large", "textures/gui/buttons/button_large.png", Texture.class));
+		addAsset(new Asset("button_medium", "textures/gui/buttons/button_medium.png", Texture.class));
+		addAsset(new Asset("button_small", "textures/gui/buttons/button_small.png", Texture.class));
+		addAsset(new Asset("button_square", "textures/gui/buttons/button_square.png", Texture.class));
 		addAsset(new Asset("background", "menu/windows.png", Texture.class));
 		addAsset(new Asset("arthur", "meme/4.jpg", Texture.class));
 		addAsset(new Asset("potato", "meme/3.jpg", Texture.class));
@@ -47,7 +57,9 @@ public class Assets extends AssetLoader
 		addAsset(new Asset("bill", "entity/bill.png", Texture.class));
 		addAsset(new Asset("bill_mad", "entity/bill_mad.png", Texture.class));
 		addAsset(new Asset("dst", "sound/sauce.mp3", Sound.class));
-		addAsset(new Asset("font", "fonts/font1.ttf", FreeTypeFontGenerator.class));
+		addAsset(new Asset("font_normal", "fonts/Ubuntu-L.ttf", FreeTypeFontGenerator.class));
+		addAsset(new Asset("font_italic", "fonts/Ubuntu-LI.ttf", FreeTypeFontGenerator.class));
+		addAsset(new Asset("font_bold", "fonts/Ubuntu-R.ttf", FreeTypeFontGenerator.class));
 	}
 	
 	/**
@@ -58,6 +70,10 @@ public class Assets extends AssetLoader
 	{
 		kakchoke = AssetBuilder.createSprite(this, "kakchoke");
 		button = AssetBuilder.createSprites(this, "button", 64);
+		button_large = AssetBuilder.createSprites(this, "button_large", 200, 20);
+		button_medium = AssetBuilder.createSprites(this, "button_medium", 140, 20);
+		button_small = AssetBuilder.createSprites(this, "button_small", 80, 20);
+		button_square = AssetBuilder.createSprites(this, "button_square", 20);
 		background = AssetBuilder.createSprite(this, "background");
 		arthur = AssetBuilder.createSprite(this, "arthur");
 		potato = AssetBuilder.createSprite(this, "potato");
@@ -65,7 +81,9 @@ public class Assets extends AssetLoader
 		bill = AssetBuilder.createSprite(this, "bill");
 		bill_mad = AssetBuilder.createSprite(this, "bill_mad");
 		dst = AssetBuilder.createSound(this, "dst");
-		font = AssetBuilder.createFont(this, "font", 128);
+		font_normal = AssetBuilder.createFont(this, "font_normal", 128);
+		font_italic = AssetBuilder.createFont(this, "font_italic", 128);
+		font_bold = AssetBuilder.createFont(this, "font_bold", 128);
 	}
 	
 	@Override
@@ -75,6 +93,8 @@ public class Assets extends AssetLoader
 		
 		// All the non-native manager disposables
 		dst.dispose();
-		font.dispose();
+		font_normal.dispose();
+		font_italic.dispose();
+		font_bold.dispose();
 	}
 }

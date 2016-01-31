@@ -17,8 +17,8 @@ import net.qwertysam.main.MyGdxGame;
 public abstract class AssetLoader implements IDisposable
 {
 	protected MyGdxGame game;
-	protected final AssetManager manager;
-	protected List<Asset> assets;
+	private final AssetManager manager;
+	private List<Asset> assets;
 	
 	public AssetLoader(MyGdxGame game)
 	{

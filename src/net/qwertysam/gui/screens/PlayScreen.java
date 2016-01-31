@@ -119,7 +119,7 @@ public class PlayScreen extends PhysicsScreen
 		
 		game.getCamera().position.set(meme.getCenterX(), meme.getCenterY(), 0);
 		
-		if (!getTouches().isEmpty()) game.assets().font.draw(batch, "" + (int) getTouches().get(0).x + ", " + (int) getTouches().get(0).y, 100, 200);
+		if (!getTouches().isEmpty()) game.assets().font_normal.draw(batch, "" + (int) getTouches().get(0).x + ", " + (int) getTouches().get(0).y, 100, 200);
 	}
 	
 	@Override

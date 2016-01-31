@@ -2,24 +2,73 @@ package net.qwertysam.api.gui;
 
 import java.util.List;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import net.qwertysam.api.gui.screen.GuiScreen;
+import net.qwertysam.api.rendering.RenderUtil;
 
 public class GuiTextButton extends GuiButton
 {
-	public GuiTextButton(GuiScreen screen, int id, List<Sprite> sprites, float x, float y)
+	private BitmapFont font;
+	private String text;
+	
+	public GuiTextButton(GuiScreen screen, List<Sprite> sprites, BitmapFont font, int id, float x, float y, String text)
 	{
-		this(screen, id, sprites, x, y, 0F);
+		this(screen, sprites, font, 1F, id, x, y, 0F, text);
 	}
 	
-	public GuiTextButton(GuiScreen screen, int id, List<Sprite> sprites, float x, float y, float touchRadius)
+	public GuiTextButton(GuiScreen screen, List<Sprite> sprites, BitmapFont font, float scale, int id, float x, float y, String text)
 	{
-		this(screen, id, sprites, x, y, touchRadius, 0F);
+		this(screen, sprites, font, scale, id, x, y, 0F, text);
 	}
 	
-	public GuiTextButton(GuiScreen screen, int id, List<Sprite> sprites, float x, float y, float touchRadius, float rotation)
+	public GuiTextButton(GuiScreen screen, List<Sprite> sprites, BitmapFont font, int id, float x, float y, float touchRadius, String text)
 	{
-		super(screen, sprites, 1F, id, x, y, touchRadius, rotation);
+		this(screen, sprites, font, 1F, id, x, y, touchRadius, 0F, text);
+	}
+	
+	public GuiTextButton(GuiScreen screen, List<Sprite> sprites, BitmapFont font, float scale, int id, float x, float y, float touchRadius, String text)
+	{
+		this(screen, sprites, font, scale, id, x, y, touchRadius, 0F, text);
+	}
+	
+	public GuiTextButton(GuiScreen screen, List<Sprite> sprites, BitmapFont font, int id, float x, float y, float touchRadius, float rotation, String text)
+	{
+		this(screen, sprites, font, 1F, id, x, y, touchRadius, rotation, text);
+	}
+	
+	public GuiTextButton(GuiScreen screen, List<Sprite> sprites, BitmapFont font,float scale, int id, float x, float y, float touchRadius, float rotation, String text)
+	{
+		super(screen, sprites, scale, id, x, y, touchRadius, rotation);
+		
+		this.font = font;
+		this.text = text;
+	}
+	
+	/**
+	 * @return the text being displayed on this button.
+	 */
+	public String getText()
+	{
+		return text;
+	}
+	
+	/**
+	 * Sets the text being displayed on this button.
+	 * 
+	 * @param text the new text
+	 */
+	public void setText(String text)
+	{
+		this.text = text;
+	}
+	
+	@Override
+	public void render(SpriteBatch batch, float xOffset, float yOffset)
+	{
+		super.render(batch, xOffset, yOffset);
+		RenderUtil.drawCenteredFont(batch, font, getX() + (getWidth() / 2), getY() + (getHeight() / 2), xOffset, yOffset, getText());
 	}
 }

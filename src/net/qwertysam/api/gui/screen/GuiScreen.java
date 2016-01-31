@@ -42,12 +42,12 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		
 		this.game = game;
 		
-		game.getCamera().setToOrtho(game.isInverted(), MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT);
-		viewport = new FitViewport(MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT, game.getCamera());
-		
 		batch = new SpriteBatch();
 		
 		init();
+		
+		game.getCamera().setToOrtho(game.isInverted(), MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT);
+		viewport = new FitViewport(MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT, game.getCamera());
 	}
 	
 	public void init()

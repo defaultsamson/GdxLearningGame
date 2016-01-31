@@ -19,6 +19,9 @@ public class GuiButton extends TouchableArea implements Renderable
 	private Sprite normal;
 	private Sprite depressed;
 	
+	private float spriteX;
+	private float spriteY;
+	
 	public GuiButton(GuiScreen screen, List<Sprite> sprites, int id, float x, float y)
 	{
 		this(screen, sprites, 1F, id, x, y, 0F);
@@ -51,6 +54,9 @@ public class GuiButton extends TouchableArea implements Renderable
 		this.screen = screen;
 		this.id = id;
 		
+		spriteX = x + ((sprites.get(0).getWidth() * (scale - 1F)) / 2);
+		spriteY = y + ((sprites.get(0).getHeight() * (scale - 1F)) / 2);
+		
 		normal = sprites.get(0);
 		normal.scale(scale - 1F);
 		depressed = sprites.get(1);
@@ -82,12 +88,28 @@ public class GuiButton extends TouchableArea implements Renderable
 		return (isTouched ? depressed : normal);
 	}
 	
+	/**
+	 * @return the x ordinate of which to draw the sprite from for it to render properly.
+	 */
+	private float getSpriteX()
+	{
+		return spriteX;
+	}
+	
+	/**
+	 * @return the y ordinate of which to draw the sprite from for it to render properly.
+	 */
+	private float getSpriteY()
+	{
+		return spriteY;
+	}
+	
 	@Override
 	public void render(SpriteBatch batch, float xOffset, float yOffset)
 	{
-		RenderUtil.drawSprite(batch, getSprite(), getX(), getY(), xOffset, yOffset, getRotation());
+		RenderUtil.drawSprite(batch, getSprite(), getSpriteX(), getSpriteY(), xOffset, yOffset, getRotation());
 	}
-
+	
 	@Override
 	public float getRotation()
 	{

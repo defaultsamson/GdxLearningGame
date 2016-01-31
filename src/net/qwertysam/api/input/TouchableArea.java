@@ -10,7 +10,7 @@ public abstract class TouchableArea
 	protected Rectangle rect;
 	
 	// These need separate variables because the rectangle's ones are offset by the touchRadius
-	private float x, y;
+	private float x, y, width, height;
 	
 	/**
 	 * An area that acts as an input for touch coordinates.
@@ -28,6 +28,8 @@ public abstract class TouchableArea
 		
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
 		
 		rect = new Rectangle(x - touchRadius, y - touchRadius, width + (touchRadius * 2), height + (touchRadius * 2));
 		//rect.setRotate(rotation);
@@ -79,7 +81,7 @@ public abstract class TouchableArea
 	/**
 	 * @return the width of this.
 	 */
-	public float getWidth()
+	public float getHitboxWidth()
 	{
 		return rect.getWidth();
 	}
@@ -87,31 +89,15 @@ public abstract class TouchableArea
 	/**
 	 * @return the height of this.
 	 */
-	public float getHeight()
+	public float getHitboxHeight()
 	{
 		return rect.getHeight();
 	}
 	
 	/**
-	 * @return the x ordinate of this.
-	 */
-	public float getX()
-	{
-		return x;
-	}
-	
-	/**
-	 * @return the y ordinate of this.
-	 */
-	public float getY()
-	{
-		return y;
-	}
-	
-	/**
 	 * @return the y ordinate of this (offset by the touch radius).
 	 */
-	public float getRectX()
+	public float getHitboxX()
 	{
 		return rect.getX();
 	}
@@ -119,7 +105,7 @@ public abstract class TouchableArea
 	/**
 	 * @return the y ordinate of this (offset by the touch radius).
 	 */
-	public float getRectY()
+	public float getHitboxY()
 	{
 		return rect.getY();
 	}
@@ -128,6 +114,38 @@ public abstract class TouchableArea
 	{
 		return 0F;
 		//return (float) rect.getRotate();
+	}
+	
+	/**
+	 * @return the x ordinate of this, ignoring the touch radius offset for the hitbox (useful for in-game visible coordinates or for rendering).
+	 */
+	public float getX()
+	{
+		return x;
+	}
+	
+	/**
+	 * @return the y ordinate of this, ignoring the touch radius offset for the hitbox (useful for in-game visible coordinates or for rendering).
+	 */
+	public float getY()
+	{
+		return y;
+	}
+	
+	/**
+	 * @return the width of this, ignoring the touch radius offset for the hitbox (useful for in-game visible width or for rendering).
+	 */
+	public float getWidth()
+	{
+		return width;
+	}
+	
+	/**
+	 * @return the height of this, ignoring the touch radius offset for the hitbox (useful for in-game visible height or for rendering).
+	 */
+	public float getHeight()
+	{
+		return height;
 	}
 	
 	/**
