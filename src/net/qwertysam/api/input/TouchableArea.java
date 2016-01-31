@@ -1,8 +1,7 @@
 package net.qwertysam.api.input;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-
-import javafx.scene.shape.Rectangle;
 
 public abstract class TouchableArea
 {
@@ -27,11 +26,12 @@ public abstract class TouchableArea
 	{
 		isTouched = false;
 		
-		this.x = x - (touchRadius / 2);
-		this.y = y - (touchRadius / 2);
+		this.x = x;
+		this.y = y;
 		
-		rect = new Rectangle(x - touchRadius, y - touchRadius, width + touchRadius, height + touchRadius);
-		rect.setRotate(rotation);
+		rect = new Rectangle(x - touchRadius, y - touchRadius, width + (touchRadius * 2), height + (touchRadius * 2));
+		//rect.setRotate(rotation);
+		
 	}
 	
 	/**
@@ -81,7 +81,7 @@ public abstract class TouchableArea
 	 */
 	public float getWidth()
 	{
-		return (float) rect.getWidth();
+		return rect.getWidth();
 	}
 	
 	/**
@@ -89,11 +89,11 @@ public abstract class TouchableArea
 	 */
 	public float getHeight()
 	{
-		return (float) rect.getHeight();
+		return rect.getHeight();
 	}
 	
 	/**
-	 * @return the y ordinate of this.
+	 * @return the x ordinate of this.
 	 */
 	public float getX()
 	{
@@ -101,7 +101,7 @@ public abstract class TouchableArea
 	}
 	
 	/**
-	 * @return the x ordinate of this.
+	 * @return the y ordinate of this.
 	 */
 	public float getY()
 	{
@@ -109,19 +109,25 @@ public abstract class TouchableArea
 	}
 	
 	/**
-	 * @return the y ordinate of this.
+	 * @return the y ordinate of this (offset by the touch radius).
 	 */
 	public float getRectX()
 	{
-		return (float) rect.getX();
+		return rect.getX();
 	}
 	
 	/**
-	 * @return the x ordinate of this.
+	 * @return the y ordinate of this (offset by the touch radius).
 	 */
 	public float getRectY()
 	{
-		return (float) rect.getY();
+		return rect.getY();
+	}
+	
+	public float getRotation()
+	{
+		return 0F;
+		//return (float) rect.getRotate();
 	}
 	
 	/**

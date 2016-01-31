@@ -85,12 +85,12 @@ public class GuiButton extends TouchableArea implements Renderable
 	@Override
 	public void render(SpriteBatch batch, float xOffset, float yOffset)
 	{
-		RenderUtil.defaultDraw(batch, getSprite(), getX(), getY(), xOffset, yOffset, getRotation());
+		RenderUtil.drawSprite(batch, getSprite(), getX(), getY(), xOffset, yOffset, getRotation());
 	}
 
 	@Override
 	public float getRotation()
 	{
-		return (float) rect.getRotate();
+		return super.getRotation();
 	}
 }

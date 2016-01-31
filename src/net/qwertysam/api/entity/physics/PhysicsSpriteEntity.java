@@ -111,6 +111,6 @@ public class PhysicsSpriteEntity extends PhysicsBoxEntity implements Renderable
 	@Override
 	public void render(SpriteBatch batch, float xOffset, float yOffset)
 	{
-		RenderUtil.defaultDraw(batch, getSprite(), getX(), getY(), xOffset, yOffset, getRotation());
+		RenderUtil.drawSprite(batch, getSprite(), getX(), getY(), xOffset, yOffset, getRotation());
 	}
 }
