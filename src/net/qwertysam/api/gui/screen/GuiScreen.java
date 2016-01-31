@@ -17,7 +17,7 @@ import net.qwertysam.api.rendering.RenderableHolder;
 import net.qwertysam.api.util.IDisposable;
 import net.qwertysam.main.MyGdxGame;
 
-public abstract class GuiScreen extends RenderableHolder<GuiButton> implements Screen, IGuiScreen, IDisposable
+public abstract class GuiScreen extends RenderableHolder<GuiButton> implements Screen, IDisposable
 {
 	public static final int MAX_TOUCHES = 4; // Typically hardware limit is 10
 	
@@ -89,7 +89,6 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		game.getCamera().update();
 	}
 	
-	@Override
 	public void tick(float delta)
 	{
 		touches.clear();
@@ -108,22 +107,18 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		if (!isEmpty()) buttonTick(touches, game.getCamera().position.x - (game.getCamera().viewportWidth / 2), game.getCamera().position.y - (game.getCamera().viewportHeight / 2));
 	}
 	
-	@Override
-	public void drawScreen(float delta)
-	{
-		
-	}
+	/**
+	 * Draws the screen.
+	 * 
+	 * @param delta the time between the last time the screen was drawn and the time that this is currently being drawn
+	 */
+	public abstract void drawScreen(float delta);
 	
 	@Override
 	public void resize(int width, int height)
 	{
 		System.out.println("Resizing ViewPort: (" + width + ", " + height + ")");
 		viewport.update(width, height, true);
-		// game.getCamera().viewportHeight = height;
-		// game.getCamera().viewportWidth = width;
-		
-		// viewport = new FitViewport(MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT, game.getCamera());
-		// viewport.apply(true);
 	}
 	
 	@Override
@@ -222,6 +217,11 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		renderEntries(batch, xButtonOffset, yButtonOffset);
 	}
 	
+	/**
+	 * Updates all the buttons in this.
+	 * 
+	 * @param touch the touch to pass to the buttons.
+	 */
 	private void updateButtons(Vector2 touch)
 	{
 		for (GuiButton entry : getEntries())
@@ -230,15 +230,33 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		}
 	}
 	
+	/**
+	 * Fires whenever a button is pressed.
+	 * 
+	 * @param buttonID the id of the button
+	 */
 	public abstract void pressAction(int buttonID);
 	
+	/**
+	 * Fires whenever a button is released.
+	 * 
+	 * @param buttonID the id of the button
+	 */
 	public abstract void releaseAction(int buttonID);
 	
+	/**
+	 * @return if this GuiScreen is currently touched.
+	 */
 	public boolean isTouched()
 	{
 		return isTouched;
 	}
 	
+	/**
+	 * @return the screen touches.
+	 *         <p>
+	 *         <b>WARNING:</b> Use isTouched() to ensure that the screen is being touched before trying to use this method.
+	 */
 	public List<Vector2> getTouches()
 	{
 		return touches;

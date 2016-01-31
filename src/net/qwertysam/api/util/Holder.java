@@ -6,7 +6,7 @@ import java.util.List;
 public class Holder<T> implements IDisposable
 {
 	private List<T> entries;
-
+	
 	/**
 	 * A holder for entries of a defined class type.
 	 */
@@ -22,7 +22,7 @@ public class Holder<T> implements IDisposable
 	{
 		return entries;
 	}
-
+	
 	/**
 	 * @return if there's no entries in this.
 	 */

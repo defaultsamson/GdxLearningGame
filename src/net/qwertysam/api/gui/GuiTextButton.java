@@ -39,7 +39,7 @@ public class GuiTextButton extends GuiButton
 		this(screen, sprites, font, 1F, id, x, y, touchRadius, rotation, text);
 	}
 	
-	public GuiTextButton(GuiScreen screen, List<Sprite> sprites, BitmapFont font,float scale, int id, float x, float y, float touchRadius, float rotation, String text)
+	public GuiTextButton(GuiScreen screen, List<Sprite> sprites, BitmapFont font, float scale, int id, float x, float y, float touchRadius, float rotation, String text)
 	{
 		super(screen, sprites, scale, id, x, y, touchRadius, rotation);
 		

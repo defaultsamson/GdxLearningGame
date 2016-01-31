@@ -32,7 +32,7 @@ public abstract class TouchableArea
 		this.height = height;
 		
 		rect = new Rectangle(x - touchRadius, y - touchRadius, width + (touchRadius * 2), height + (touchRadius * 2));
-		//rect.setRotate(rotation);
+		// rect.setRotate(rotation);
 		
 	}
 	
@@ -113,7 +113,7 @@ public abstract class TouchableArea
 	public float getRotation()
 	{
 		return 0F;
-		//return (float) rect.getRotate();
+		// return (float) rect.getRotate();
 	}
 	
 	/**
