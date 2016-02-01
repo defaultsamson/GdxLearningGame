@@ -8,7 +8,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import net.qwertysam.api.gui.GuiButton;
@@ -47,7 +48,8 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		init();
 		
 		game.getCamera().setToOrtho(game.isInverted(), MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT);
-		viewport = new FitViewport(MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT, game.getCamera());
+		viewport = new ScalingViewport(Scaling.fillX, MyGdxGame.CAMERA_WIDTH, MyGdxGame.CAMERA_HEIGHT, game.getCamera());
+		
 	}
 	
 	public void init()
