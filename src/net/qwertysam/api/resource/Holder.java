@@ -1,4 +1,4 @@
-package net.qwertysam.api.util;
+package net.qwertysam.api.resource;
 
 import java.util.ArrayList;
 import java.util.List;

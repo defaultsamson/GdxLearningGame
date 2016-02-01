@@ -1,6 +1,6 @@
 package net.qwertysam.api.language;
 
-import net.qwertysam.api.util.Holder;
+import net.qwertysam.api.resource.Holder;
 
 public class TranslationHolder extends Holder<Translation>
 {

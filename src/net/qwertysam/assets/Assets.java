@@ -3,8 +3,8 @@ package net.qwertysam.assets;
 import java.util.List;
 
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
@@ -12,6 +12,8 @@ import net.qwertysam.api.assets.Asset;
 import net.qwertysam.api.assets.AssetLoader;
 import net.qwertysam.api.builder.AssetBuilder;
 import net.qwertysam.main.MyGdxGame;
+import net.qwertysam.resource.FontTypeHolder;
+import net.qwertysam.resource.FontVarietyHolder;
 
 public class Assets extends AssetLoader
 {
@@ -33,9 +35,18 @@ public class Assets extends AssetLoader
 	public Sprite bill;
 	public Sprite bill_mad;
 	public Sound dst;
+	public FontVarietyHolder ubuntu;
+	/*
 	public BitmapFont font_normal;
 	public BitmapFont font_italic;
 	public BitmapFont font_bold;
+	public BitmapFont font_small_normal;
+	public BitmapFont font_small_italic;
+	public BitmapFont font_small_bold;
+	public BitmapFont font_black_normal;
+	public BitmapFont font_black_italic;
+	public BitmapFont font_black_bold;
+	*/
 	public Sprite vignette;
 	
 	/**
@@ -83,9 +94,39 @@ public class Assets extends AssetLoader
 		bill = AssetBuilder.createSprite(this, "bill");
 		bill_mad = AssetBuilder.createSprite(this, "bill_mad");
 		dst = AssetBuilder.createSound(this, "dst");
-		font_normal = AssetBuilder.createFont(this, "font_normal", 128);
-		font_italic = AssetBuilder.createFont(this, "font_italic", 128);
-		font_bold = AssetBuilder.createFont(this, "font_bold", 128);
+		
+		int big_font = 128, medium_font = 82, small_font = 54;
+		ubuntu = new FontVarietyHolder(
+				new FontTypeHolder(
+						AssetBuilder.createFont(this, "font_normal", big_font),
+						AssetBuilder.createFont(this, "font_bold", big_font), 
+						AssetBuilder.createFont(this, "font_italic", big_font)),
+		
+				new FontTypeHolder(
+						AssetBuilder.createFont(this, "font_normal", medium_font),
+						AssetBuilder.createFont(this, "font_bold", medium_font), 
+						AssetBuilder.createFont(this, "font_italic", medium_font)),
+				
+				new FontTypeHolder(
+						AssetBuilder.createFont(this, "font_normal", small_font),
+						AssetBuilder.createFont(this, "font_bold", small_font), 
+						AssetBuilder.createFont(this, "font_italic", small_font)),
+				
+				new FontTypeHolder(
+						AssetBuilder.createFont(this, "font_normal", Color.BLACK, big_font),
+						AssetBuilder.createFont(this, "font_bold", Color.BLACK, big_font), 
+						AssetBuilder.createFont(this, "font_italic", Color.BLACK, big_font)),
+		
+				new FontTypeHolder(
+						AssetBuilder.createFont(this, "font_normal", Color.BLACK, medium_font),
+						AssetBuilder.createFont(this, "font_bold", Color.BLACK, medium_font), 
+						AssetBuilder.createFont(this, "font_italic", Color.BLACK, medium_font)),
+				
+				new FontTypeHolder(
+						AssetBuilder.createFont(this, "font_normal", Color.BLACK, small_font),
+						AssetBuilder.createFont(this, "font_bold", Color.BLACK, small_font), 
+						AssetBuilder.createFont(this, "font_italic", Color.BLACK, small_font))
+				);
 		vignette = AssetBuilder.createSprite(this, "vignette");
 	}
 	
@@ -96,8 +137,6 @@ public class Assets extends AssetLoader
 		
 		// All the non-native manager disposables
 		dst.dispose();
-		font_normal.dispose();
-		font_italic.dispose();
-		font_bold.dispose();
+		ubuntu.dispose();
 	}
 }

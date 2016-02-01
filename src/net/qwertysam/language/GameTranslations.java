@@ -19,6 +19,9 @@ public class GameTranslations extends TranslationManager
 		registerEntry(new TranslationHolder(TranslationKey.GUI_BUTTON_PLAY, new Translation("Play", Language.ENGLISH, Language.AMERICAN_ENGLISH), new Translation("Joue", Language.FRENCH)));
 		registerEntry(new TranslationHolder(TranslationKey.GUI_BUTTON_OPTIONS, new Translation("Options", Language.ENGLISH, Language.AMERICAN_ENGLISH)));
 		registerEntry(new TranslationHolder(TranslationKey.GUI_BUTTON_HELP, new Translation("Help", Language.ENGLISH, Language.AMERICAN_ENGLISH)));
+		registerEntry(new TranslationHolder(TranslationKey.GUI_BUTTON_BACK, new Translation("Back", Language.ENGLISH, Language.AMERICAN_ENGLISH)));
+		registerEntry(new TranslationHolder(TranslationKey.GUI_BUTTON_VIDEO, new Translation("Video", Language.ENGLISH, Language.AMERICAN_ENGLISH)));
+		registerEntry(new TranslationHolder(TranslationKey.GUI_BUTTON_LANGUAGE, new Translation("Language", Language.ENGLISH, Language.AMERICAN_ENGLISH)));
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-package net.qwertysam.api.util;
+package net.qwertysam.api.resource;
 
 public interface IDisposable
 {

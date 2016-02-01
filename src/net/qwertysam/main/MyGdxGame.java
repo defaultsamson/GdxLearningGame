@@ -6,12 +6,13 @@ import java.util.List;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
-import net.qwertysam.api.gui.screen.ScreenManager;
 import net.qwertysam.api.language.Language;
 import net.qwertysam.api.language.TranslationManager;
-import net.qwertysam.api.util.IDisposable;
+import net.qwertysam.api.resource.IDisposable;
 import net.qwertysam.assets.Assets;
 import net.qwertysam.assets.Files;
+import net.qwertysam.gui.screens.MainMenuGui;
+import net.qwertysam.gui.screens.ScreenManager;
 import net.qwertysam.language.GameTranslations;
 
 public class MyGdxGame extends Game
@@ -56,9 +57,8 @@ public class MyGdxGame extends Game
 		centerCamera();
 		// ScreenManager uses the camera instance
 		screenManager = new ScreenManager(this);
-		registerDisposable(screenManager);
 		
-		screenManager.switchScreen(screenManager.mainMenu);
+		screenManager.switchScreen(new MainMenuGui(this));
 	}
 	
 	@Override

@@ -1,7 +1,7 @@
 package net.qwertysam.assets;
 
+import net.qwertysam.api.resource.IDisposable;
 import net.qwertysam.api.save.File;
-import net.qwertysam.api.util.IDisposable;
 import net.qwertysam.main.MyGdxGame;
 
 public class Files implements IDisposable

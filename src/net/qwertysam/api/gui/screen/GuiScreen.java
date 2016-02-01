@@ -8,13 +8,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import net.qwertysam.api.gui.GuiButton;
 import net.qwertysam.api.rendering.RenderableHolder;
-import net.qwertysam.api.util.IDisposable;
+import net.qwertysam.api.resource.IDisposable;
+import net.qwertysam.api.util.InputUtil;
 import net.qwertysam.main.MyGdxGame;
 
 public abstract class GuiScreen extends RenderableHolder<GuiButton> implements Screen, IDisposable
@@ -95,14 +95,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		
 		isTouched = Gdx.input.isTouched();
 		
-		for (int i = 0; i < MAX_TOUCHES; i++)
-		{
-			if (Gdx.input.isTouched(i))
-			{
-				Vector3 vector3 = viewport.unproject(new Vector3(Gdx.input.getX(i), Gdx.input.getY(i), 0F));
-				touches.add(new Vector2(vector3.x, vector3.y));
-			}
-		}
+		touches = InputUtil.getTouches(MAX_TOUCHES, viewport);
 		
 		if (!isEmpty()) buttonTick(touches, game.getCamera().position.x - (game.getCamera().viewportWidth / 2), game.getCamera().position.y - (game.getCamera().viewportHeight / 2));
 	}

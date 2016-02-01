@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 
-import net.qwertysam.api.util.IDisposable;
+import net.qwertysam.api.resource.IDisposable;
 import net.qwertysam.main.MyGdxGame;
 
 public abstract class AssetLoader implements IDisposable

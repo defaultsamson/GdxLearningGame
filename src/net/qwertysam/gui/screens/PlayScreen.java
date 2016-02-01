@@ -124,7 +124,7 @@ public class PlayScreen extends PhysicsScreen
 		
 		game.getCamera().position.set(meme.getCenterX(), meme.getCenterY(), 0);
 		
-		if (!getTouches().isEmpty()) game.assets().font_normal.draw(batch, "" + (int) getTouches().get(0).x + ", " + (int) getTouches().get(0).y, 100, 200);
+		if (!getTouches().isEmpty()) game.assets().ubuntu.white_big.italic.draw(batch, "" + (int) getTouches().get(0).x + ", " + (int) getTouches().get(0).y, 100, 200);
 		
 		
 	}
@@ -135,8 +135,7 @@ public class PlayScreen extends PhysicsScreen
 		switch (buttonID)
 		{
 			case 0:
-				game.setScreen(game.screenManager().mainMenu);
-				// game.assets().dst.play();
+				game.setScreen(new MainMenuGui(game));
 				break;
 		}
 	}
