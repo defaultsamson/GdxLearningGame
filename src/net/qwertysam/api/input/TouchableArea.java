@@ -1,11 +1,16 @@
 package net.qwertysam.api.input;
 
+import java.util.List;
+
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class TouchableArea
 {
+	private static boolean screenReleased;
+	
 	protected boolean isTouched;
+	protected boolean previouslyTouched;
 	
 	protected Rectangle rect;
 	
@@ -36,21 +41,74 @@ public abstract class TouchableArea
 		
 	}
 	
+	public void updateTouches(List<Vector2> touches)
+	{
+		updatePre();
+		
+		if (touches == null)
+		{
+			update(null);
+		}
+		else
+		{
+			for (Vector2 touch : touches)
+			{
+				update(touch);
+			}
+		}
+		
+		updatePost();
+	}
+	
 	/**
-	 * Updates the onPressed() and onReleased() methods.
+	 * Pass each touch to this method.
+	 * <p>
+	 * Updates the variables that tell whether the button is being touched, or if the screen has stopped being touch altogether. (These variables are used in updatePost() )
+	 * <p>
+	 * <b>RUN THIS BEFORE THE update(Vector2 touch) METHOD</b>
+	 * <p>
+	 * <b>USE update(List<'Vector2> touches) TO AVOID THESE RULES ALTOGETHER.
 	 * 
 	 * @param touch the touch coordinates.
 	 */
-	public void update(Vector2 touch)
+	public void updatePre()
 	{
-		boolean previouslyTouched = isTouched;
-		isTouched = isTouching(touch);
-		boolean screenReleased = false;
+		previouslyTouched = isTouched;
+		screenReleased = false;
+		isTouched = false;
+	}
+	
+	/**
+	 * Pass each touch to this method.
+	 * <p>
+	 * Updates the variables that tell whether the button is being touched, or if the screen has stopped being touch altogether. (These variables are used in updatePost() )
+	 * <p>
+	 * <b>RUN THIS AFTER THE updatePre() METHOD AND JUST BEFORE THE updatePost()</b>
+	 * <p>
+	 * <b>USE update(List<'Vector2> touches) TO AVOID THESE RULES ALTOGETHER.
+	 * 
+	 * @param touch the touch coordinates.
+	 */
+	private void update(Vector2 touch)
+	{
+		// Only try to update if it's necessary
+		if (isTouched == false) isTouched = isTouching(touch);
 		
 		if (touch == null)
 		{
 			screenReleased = true;
 		}
+	}
+	
+	/**
+	 * Updates the onRelease() and onPressed() methods of this.
+	 * 
+	 * <b>RUN THIS AFTER THE update(Vector2 touch); METHOD</b>
+	 * <p>
+	 * <b>USE update(List<'Vector2> touches) TO AVOID THESE RULES ALTOGETHER.
+	 */
+	public void updatePost()
+	{
 		// If the button was touched last tick but is no longer being touched
 		if (previouslyTouched && !isTouched && screenReleased)
 		{

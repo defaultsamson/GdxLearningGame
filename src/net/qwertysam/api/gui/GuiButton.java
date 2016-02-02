@@ -9,6 +9,7 @@ import net.qwertysam.api.gui.screen.GuiScreen;
 import net.qwertysam.api.input.TouchableArea;
 import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.api.rendering.Renderable;
+import net.qwertysam.api.util.SpriteUtil;
 
 public class GuiButton extends TouchableArea implements Renderable
 {
@@ -18,9 +19,6 @@ public class GuiButton extends TouchableArea implements Renderable
 	
 	private Sprite normal;
 	private Sprite depressed;
-	
-	private float spriteX;
-	private float spriteY;
 	
 	public GuiButton(GuiScreen screen, List<Sprite> sprites, int id, float x, float y)
 	{
@@ -54,13 +52,8 @@ public class GuiButton extends TouchableArea implements Renderable
 		this.screen = screen;
 		this.id = id;
 		
-		spriteX = x + ((sprites.get(0).getWidth() * (scale - 1F)) / 2);
-		spriteY = y + ((sprites.get(0).getHeight() * (scale - 1F)) / 2);
-		
-		normal = new Sprite(sprites.get(0));
-		normal.scale(scale - 1F);
-		depressed = new Sprite(sprites.get(1));
-		depressed.scale(scale - 1F);
+		normal = SpriteUtil.getScaledSprite(sprites.get(0), scale);
+		depressed = SpriteUtil.getScaledSprite(sprites.get(1), scale);
 	}
 	
 	@Override
@@ -88,26 +81,10 @@ public class GuiButton extends TouchableArea implements Renderable
 		return (isTouched ? depressed : normal);
 	}
 	
-	/**
-	 * @return the x ordinate of which to draw the sprite from for it to render properly.
-	 */
-	private float getSpriteX()
-	{
-		return spriteX;
-	}
-	
-	/**
-	 * @return the y ordinate of which to draw the sprite from for it to render properly.
-	 */
-	private float getSpriteY()
-	{
-		return spriteY;
-	}
-	
 	@Override
 	public void render(SpriteBatch batch, float xOffset, float yOffset)
 	{
-		RenderUtil.drawSprite(batch, getSprite(), getSpriteX(), getSpriteY(), xOffset, yOffset, getRotation());
+		RenderUtil.drawSprite(batch, getSprite(), getX(), getY(), xOffset, yOffset, getRotation());
 	}
 	
 	@Override

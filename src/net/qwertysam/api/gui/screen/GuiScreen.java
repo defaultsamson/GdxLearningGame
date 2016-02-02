@@ -189,10 +189,16 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		}
 		else
 		{
+			// Need this so that the original touches don't get modified.
+			// Modifying the original touches will screw with other game elements that rely on them.
+			List<Vector2> outTouches = new ArrayList<Vector2>();
+			
 			for (Vector2 touch : touches)
 			{
-				updateButtons(touch.cpy().add(-xOffset, -yOffset));// new Vector2(touch.x - xOffset, touch.y - yOffset)
+				outTouches.add(touch.cpy().add(-xButtonOffset, -yButtonOffset));
 			}
+			
+			updateButtons(outTouches);
 		}
 	}
 	
@@ -217,11 +223,11 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	 * 
 	 * @param touch the touch to pass to the buttons.
 	 */
-	private void updateButtons(Vector2 touch)
+	private void updateButtons(List<Vector2> touches)
 	{
 		for (GuiButton entry : getEntries())
 		{
-			entry.update(touch);
+			entry.updateTouches(touches);
 		}
 	}
 	

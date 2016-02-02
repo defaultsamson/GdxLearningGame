@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.api.rendering.Renderable;
+import net.qwertysam.api.util.SpriteUtil;
 
 public class PhysicsSpriteEntity extends PhysicsBoxEntity implements Renderable
 {
@@ -88,13 +89,7 @@ public class PhysicsSpriteEntity extends PhysicsBoxEntity implements Renderable
 	{
 		super(world, friction, restitution, mass, x, y, width * scale, height * scale, isStatic, canRotate);
 		
-		float scaledWidth = width * scale;
-		float scaledHeight = height * scale;
-		
-		sprite.setOrigin(scaledWidth / 2, scaledHeight / 2);
-		sprite.setSize(scaledWidth, scaledHeight);
-		
-		this.sprite = sprite;
+		this.sprite = SpriteUtil.getScaledSprite(sprite, scale);
 	}
 	
 	/**

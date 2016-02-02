@@ -7,7 +7,7 @@ import net.qwertysam.api.builder.LightBuilder;
 import net.qwertysam.api.entity.physics.PhysicsBoundsEntity;
 import net.qwertysam.api.entity.physics.PhysicsEntity;
 import net.qwertysam.api.entity.physics.PhysicsSpriteEntity;
-import net.qwertysam.api.gui.GuiButton;
+import net.qwertysam.api.gui.GuiTextButton;
 import net.qwertysam.api.gui.screen.PhysicsScreen;
 import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.api.rendering.RenderableHolder;
@@ -56,7 +56,7 @@ public class PlayScreen extends PhysicsScreen
 	@Override
 	public void init()
 	{
-		registerEntry(new GuiButton(this, game.assets().button, 0, 20, 20));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_small.italic, 4F, 0, 20, 190, "Back"));
 	}
 	
 	@Override
@@ -116,10 +116,12 @@ public class PlayScreen extends PhysicsScreen
 		batch.draw(game.assets().background, 0, 0);
 		
 		spriteEntities.renderEntries(batch);
-		renderEntries(batch);
 		
 		float cameraXOffset = game.getCamera().position.x - (getWidth() / 2);
 		float cameraYOffset = game.getCamera().position.y - (getHeight() / 2);
+		
+		renderEntries(batch);
+		
 		RenderUtil.drawVignette(batch, game, cameraXOffset, cameraYOffset);
 		
 		game.getCamera().position.set(meme.getCenterX(), meme.getCenterY(), 0);

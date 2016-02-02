@@ -21,7 +21,7 @@ public class HelpScreen extends GuiScreen
 	public void init()
 	{
 		//registerEntry(new GuiButton(this, game.assets().button_square, 4F, 1, 100, 100, 0, 0));
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 2, 40, 150, 40, 50, TranslationKey.GUI_BUTTON_BACK.translate(game)));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 2, 40, 190, 40, 50, TranslationKey.GUI_BUTTON_BACK.translate(game)));
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class HelpScreen extends GuiScreen
 		
 		int fingers = InputUtil.getTouches(10, viewport).size();
 		
-		RenderUtil.drawCenteredFont(batch, game.assets().ubuntu.black_medium.normal, MyGdxGame.CAMERA_WIDTH / 2, 400, 0, 0, fingers + "/" + getTouches().size() + " Touches");
+		RenderUtil.drawCenteredFont(batch, game.assets().ubuntu.black_medium.normal, MyGdxGame.CAMERA_WIDTH / 2, 420, 0, 0, fingers + "/" + getTouches().size() + " Touches");
 		
 		renderButtons(batch);
 		
