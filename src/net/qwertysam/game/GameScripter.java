@@ -1,5 +1,7 @@
 package net.qwertysam.game;
 
+import net.qwertysam.game.screens.StackEmScreen;
+import net.qwertysam.gui.screens.MainMenuGui;
 import net.qwertysam.main.MyGdxGame;
 
 public class GameScripter
@@ -21,6 +23,11 @@ public class GameScripter
 		switch (currentLevel)
 		{
 			case 0:
+				game.setScreen(new StackEmScreen(game));
+				break;
+			default:
+				currentLevel = -1;
+				game.setScreen(new MainMenuGui(game));
 				break;
 		}
 	}

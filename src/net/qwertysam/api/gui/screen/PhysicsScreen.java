@@ -62,6 +62,9 @@ public abstract class PhysicsScreen extends GuiScreen
 	}
 	
 	@Override
+	public abstract void drawScreen(float delta, float cameraXOffset, float cameraYOffset);
+	
+	@Override
 	public void dispose()
 	{
 		super.dispose();
