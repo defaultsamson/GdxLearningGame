@@ -11,12 +11,24 @@ import net.qwertysam.api.language.Language;
 import net.qwertysam.api.resource.IDisposable;
 import net.qwertysam.assets.Assets;
 import net.qwertysam.assets.Files;
-import net.qwertysam.gui.screens.MainMenuGui;
-import net.qwertysam.gui.screens.ScreenManager;
+import net.qwertysam.gui.screens.LoadingScreen;
 import net.qwertysam.language.GameTranslations;
 
 public class MyGdxGame extends Game
 {
+	private static MyGdxGame game;
+	
+	/**
+	 * <b>THERE SHOULD NEVER BE A NEED FOR THIS</b>
+	 * 
+	 * @return the game instance.
+	 */
+	@Deprecated
+	public static MyGdxGame getInstance()
+	{
+		return game;
+	}
+	
 	/** The width of the virtual viewport. */
 	public static final float CAMERA_WIDTH = 720;
 	/** The height of the virtual viewport. */
@@ -30,7 +42,6 @@ public class MyGdxGame extends Game
 	
 	private Assets assets;
 	private Files files;
-	private ScreenManager screenManager;
 	private OrthographicCamera camera;
 	private Language language;
 	private GameTranslations translator;
@@ -38,15 +49,10 @@ public class MyGdxGame extends Game
 	@Override
 	public void create()
 	{
+		game = this;
 		isYInverted = false;
 		
 		disposables = new ArrayList<IDisposable>();
-		
-		assets = new Assets(this);
-		registerDisposable(assets);
-		
-		files = new Files(this);
-		registerDisposable(files);
 		
 		translator = new GameTranslations(this);
 		registerDisposable(translator);
@@ -57,14 +63,27 @@ public class MyGdxGame extends Game
 		// MUST INSTANCIATE CAMERA BEFORE SCREEN MANAGER
 		camera = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		centerCamera();
-		// ScreenManager uses the camera instance
-		screenManager = new ScreenManager(this);
+		
+		assets = new Assets(this);
+		registerDisposable(assets);
+		
+		files = new Files(this);
+		registerDisposable(files);
 		
 		float percentageOfScreenShowing = ((float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getWidth()) * (CAMERA_WIDTH / CAMERA_HEIGHT);
 		float pixelsOffScreen = CAMERA_HEIGHT - (CAMERA_HEIGHT * percentageOfScreenShowing);
 		gutterOffset = pixelsOffScreen / 2;
 		
-		screenManager.switchScreen(new MainMenuGui(this));
+		
+		// Load sequence
+		setScreen(new LoadingScreen(this));
+		// LoadingScreen now handles the loading of assets and files
+		//assets.load();
+		//files.load();
+		
+		
+		// After loading everything, show game screen
+		//setScreen(new MainMenuGui(this));
 	}
 	
 	@Override
@@ -101,14 +120,6 @@ public class MyGdxGame extends Game
 	public Files files()
 	{
 		return files;
-	}
-	
-	/**
-	 * @return the instance of the ScreenManager.
-	 */
-	public ScreenManager screenManager()
-	{
-		return screenManager;
 	}
 	
 	/**

@@ -25,8 +25,6 @@ public abstract class AssetLoader implements IDisposable
 		this.game = game;
 		manager = new AssetManager();
 		assets = new ArrayList<Asset>();
-		
-		load();
 	}
 	
 	/**

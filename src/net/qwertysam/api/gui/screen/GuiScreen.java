@@ -81,8 +81,11 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 		// Begins the drawing phase
 		batch.begin();
 		
+		float cameraXOffset = game.getCamera().position.x - (getWidth() / 2);
+		float cameraYOffset = game.getCamera().position.y - (getHeight() / 2);
+		
 		// Draws the actual shiz in the screen
-		drawScreen(delta);
+		drawScreen(delta, cameraXOffset, cameraYOffset);
 		
 		// Ends the drawing phase
 		batch.end();
@@ -107,7 +110,7 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	 * 
 	 * @param delta the time between the last time the screen was drawn and the time that this is currently being drawn
 	 */
-	public abstract void drawScreen(float delta);
+	public abstract void drawScreen(float delta, float cameraXOffset, float cameraYOffset);
 	
 	@Override
 	public void resize(int width, int height)
