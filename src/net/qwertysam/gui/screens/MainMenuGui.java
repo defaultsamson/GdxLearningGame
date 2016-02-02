@@ -23,7 +23,7 @@ public class MainMenuGui extends GuiScreen
 	}
 	
 	@Override
-	public void drawScreen(float delta)
+	public void drawScreen(float delta, float cameraXOffset, float cameraYOffset)
 	{
 		game.centerCamera();
 		//batch.draw(game.assets().background, 0, 0);
@@ -47,7 +47,8 @@ public class MainMenuGui extends GuiScreen
 		switch (buttonID)
 		{
 			case 0:
-				game.setScreen(new PlayScreen(game));
+				game.getScripter().gotoNextLevel();
+				// game.setScreen(new OldPlayScreen(game));
 				// game.assets().dst.play();
 				break;
 			case 1:

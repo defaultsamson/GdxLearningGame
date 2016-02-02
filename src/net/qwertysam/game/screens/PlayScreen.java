@@ -1,4 +1,4 @@
-package net.qwertysam.gui.screens;
+package net.qwertysam.game.screens;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -6,6 +6,7 @@ import net.qwertysam.api.gui.GuiTextButton;
 import net.qwertysam.api.gui.screen.PhysicsScreen;
 import net.qwertysam.api.language.TranslationKey;
 import net.qwertysam.api.rendering.RenderUtil;
+import net.qwertysam.gui.screens.MainMenuGui;
 import net.qwertysam.main.MyGdxGame;
 
 public abstract class PlayScreen extends PhysicsScreen

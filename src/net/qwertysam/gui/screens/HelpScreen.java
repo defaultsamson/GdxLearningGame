@@ -25,7 +25,7 @@ public class HelpScreen extends GuiScreen
 	}
 	
 	@Override
-	public void drawScreen(float delta)
+	public void drawScreen(float delta, float cameraXOffset, float cameraYOffset)
 	{
 		game.centerCamera();
 		//batch.draw(game.assets().background, 0, 0);

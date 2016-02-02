@@ -11,6 +11,7 @@ import net.qwertysam.api.language.Language;
 import net.qwertysam.api.resource.IDisposable;
 import net.qwertysam.assets.Assets;
 import net.qwertysam.assets.Files;
+import net.qwertysam.game.GameScripter;
 import net.qwertysam.gui.screens.LoadingScreen;
 import net.qwertysam.language.GameTranslations;
 
@@ -45,6 +46,7 @@ public class MyGdxGame extends Game
 	private OrthographicCamera camera;
 	private Language language;
 	private GameTranslations translator;
+	private GameScripter scripter;
 	
 	@Override
 	public void create()
@@ -56,6 +58,8 @@ public class MyGdxGame extends Game
 		
 		translator = new GameTranslations(this);
 		registerDisposable(translator);
+		
+		scripter = new GameScripter(this);
 		
 		// TODO make language selector
 		language = Language.ENGLISH;
@@ -168,5 +172,13 @@ public class MyGdxGame extends Game
 	public float getGutterOffset()
 	{
 		return gutterOffset;
+	}
+	
+	/**
+	 * @return the GameScripter instance.
+	 */
+	public GameScripter getScripter()
+	{
+		return scripter;
 	}
 }
