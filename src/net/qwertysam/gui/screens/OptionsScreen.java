@@ -20,9 +20,9 @@ public class OptionsScreen extends GuiScreen
 	public void init()
 	{
 		//registerEntry(new GuiButton(this, game.assets().button_square, 4F, 1, 100, 100, 0, 0));
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 0, 40, 650, 30, 50, TranslationKey.GUI_BUTTON_VIDEO.translate(game)));
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 1, 40, 420, 30, 50, TranslationKey.GUI_BUTTON_LANGUAGE.translate(game)));
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 2, 40, 190, 30, 50, TranslationKey.GUI_BUTTON_BACK.translate(game)));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 0, 40, 650, 30, 50, TranslationKey.GUI_BUTTON_VIDEO));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 1, 40, 420, 30, 50, TranslationKey.GUI_BUTTON_LANGUAGE));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 2, 40, 190, 30, 50, TranslationKey.GUI_BUTTON_BACK));
 	}
 	
 	@Override

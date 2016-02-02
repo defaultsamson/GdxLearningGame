@@ -9,6 +9,7 @@ import net.qwertysam.api.entity.physics.PhysicsEntity;
 import net.qwertysam.api.entity.physics.PhysicsSpriteEntity;
 import net.qwertysam.api.gui.GuiTextButton;
 import net.qwertysam.api.gui.screen.PhysicsScreen;
+import net.qwertysam.api.language.TranslationKey;
 import net.qwertysam.api.rendering.RenderUtil;
 import net.qwertysam.api.rendering.RenderableHolder;
 import net.qwertysam.main.MyGdxGame;
@@ -41,9 +42,9 @@ public class PlayScreen extends PhysicsScreen
 		
 		rayHandler.setAmbientLight(0.5F);
 		
-		LightBuilder.createPointLight(rayHandler, 400, 1.5F, new Color(0F, 0F, 0F, 1F), 800, false, 200, 200);
-		LightBuilder.createPointLight(rayHandler, 400, 1.5F, Color.BLUE.add(Color.LIME).add(new Color(0F, 0F, 0F, 0.8F)), 800, false, 1500, 900);
-		LightBuilder.createPointLight(rayHandler, 400, 1.5F, Color.RED, 800, false, 1700, 200);
+		LightBuilder.createPointLight(rayHandler, 200, 1.5F, new Color(0F, 0F, 0F, 1F), 800, false, 200, 200);
+		LightBuilder.createPointLight(rayHandler, 200, 1.5F, Color.BLUE.add(Color.LIME).add(new Color(0F, 0F, 0F, 0.8F)), 800, false, 1500, 900);
+		LightBuilder.createPointLight(rayHandler, 200, 1.5F, Color.RED, 800, false, 1700, 200);
 		
 		// light.attachToBody(meme.getBody());
 		
@@ -56,7 +57,7 @@ public class PlayScreen extends PhysicsScreen
 	@Override
 	public void init()
 	{
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_small.italic, 4F, 0, 20, 190, "Back"));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_small.italic, 4F, 0, 20, 190, TranslationKey.GUI_BUTTON_BACK));
 	}
 	
 	@Override

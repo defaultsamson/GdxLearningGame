@@ -21,7 +21,7 @@ public class HelpScreen extends GuiScreen
 	public void init()
 	{
 		//registerEntry(new GuiButton(this, game.assets().button_square, 4F, 1, 100, 100, 0, 0));
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 2, 40, 190, 40, 50, TranslationKey.GUI_BUTTON_BACK.translate(game)));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 2, 40, 190, 40, 50, TranslationKey.GUI_BUTTON_BACK));
 	}
 	
 	@Override

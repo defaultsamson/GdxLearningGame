@@ -7,7 +7,6 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import net.qwertysam.api.language.Language;
-import net.qwertysam.api.language.TranslationManager;
 import net.qwertysam.api.resource.IDisposable;
 import net.qwertysam.assets.Assets;
 import net.qwertysam.assets.Files;
@@ -31,7 +30,7 @@ public class MyGdxGame extends Game
 	private ScreenManager screenManager;
 	private OrthographicCamera camera;
 	private Language language;
-	private TranslationManager translator;
+	private GameTranslations translator;
 	
 	@Override
 	public void create()
@@ -140,7 +139,7 @@ public class MyGdxGame extends Game
 	/**
 	 * @return the TranslationManager instance.
 	 */
-	public TranslationManager getTranslator()
+	public GameTranslations getTranslator()
 	{
 		return translator;
 	}

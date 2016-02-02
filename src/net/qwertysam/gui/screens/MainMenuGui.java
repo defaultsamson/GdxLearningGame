@@ -17,9 +17,9 @@ public class MainMenuGui extends GuiScreen
 	public void init()
 	{
 		//registerEntry(new GuiButton(this, game.assets().button_square, 4F, 1, 100, 100, 0, 0));
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 0, 40, 650, 20, 50, TranslationKey.GUI_BUTTON_PLAY.translate(game)));
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 1, 40, 420, 20, 50, TranslationKey.GUI_BUTTON_OPTIONS.translate(game)));
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 2, 40, 190, 20, 50, TranslationKey.GUI_BUTTON_HELP.translate(game)));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 0, 40, 650, 20, 50, TranslationKey.GUI_BUTTON_PLAY));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 1, 40, 420, 20, 50, TranslationKey.GUI_BUTTON_OPTIONS));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_medium.normal, 8F, 2, 40, 190, 20, 50, TranslationKey.GUI_BUTTON_HELP));
 	}
 	
 	@Override
