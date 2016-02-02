@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import net.qwertysam.api.language.Language;
@@ -20,6 +21,8 @@ public class MyGdxGame extends Game
 	public static final float CAMERA_WIDTH = 720;
 	/** The height of the virtual viewport. */
 	public static final float CAMERA_HEIGHT = 1280;
+	
+	private static float gutterOffset;
 	
 	private boolean isYInverted;
 	
@@ -56,6 +59,10 @@ public class MyGdxGame extends Game
 		centerCamera();
 		// ScreenManager uses the camera instance
 		screenManager = new ScreenManager(this);
+		
+		float percentageOfScreenShowing = ((float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getWidth()) * (CAMERA_WIDTH / CAMERA_HEIGHT);
+		float pixelsOffScreen = CAMERA_HEIGHT - (CAMERA_HEIGHT * percentageOfScreenShowing);
+		gutterOffset = pixelsOffScreen / 2;
 		
 		screenManager.switchScreen(new MainMenuGui(this));
 	}
@@ -142,5 +149,13 @@ public class MyGdxGame extends Game
 	public GameTranslations getTranslator()
 	{
 		return translator;
+	}
+	
+	/**
+	 * @return the amount of pixels below/above the screen that aren't being shown.
+	 */
+	public float getGutterOffset()
+	{
+		return gutterOffset;
 	}
 }

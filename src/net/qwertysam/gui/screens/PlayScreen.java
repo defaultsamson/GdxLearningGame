@@ -57,7 +57,7 @@ public class PlayScreen extends PhysicsScreen
 	@Override
 	public void init()
 	{
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_small.italic, 4F, 0, 20, 190, TranslationKey.GUI_BUTTON_BACK));
+		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_small.italic, 4F, 0, 20, game.getGutterOffset() + 20, TranslationKey.GUI_BUTTON_BACK));
 	}
 	
 	@Override
