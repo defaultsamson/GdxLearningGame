@@ -4,9 +4,10 @@ An Android and Desktop game created as a prototype to help myself learn to use I
 ### Contributing
 
 1. Install [IntelliJ IDEA](https://www.jetbrains.com/idea/download), [Eclipse](https://www.eclipse.org/downloads/), [Android Studio](https://developer.android.com/studio), or any IDE of your choice 
-2. (Optional) Install the [Android SDK](https://developer.android.com/studio/releases/sdk-tools) (if not already installed by your IDE)
-3. Clone this repository `git clone https://github.com/qwertysam/GdxLearningGame.git`
-4. Open it as a Gradle project, and sync Gradle to download all the dependencies
+2. Install the Java JDK 8+
+3. (Optional) Install the [Android SDK](https://developer.android.com/studio/releases/sdk-tools) (if not already installed by your IDE)
+4. Clone this repository `git clone https://github.com/qwertysam/GdxLearningGame.git`
+5. Open it as a Gradle project, and sync Gradle to download all the dependencies
 
 Now you can run this game!
 
