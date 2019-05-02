@@ -34,7 +34,7 @@ public class HelpScreen extends GuiScreen
 		RenderUtil.drawCenteredFont(batch, game.assets().ubuntu.black_medium.normal, MyGdxGame.CAMERA_WIDTH / 2, 800, 0, 0, "Press play twice");
 		RenderUtil.drawCenteredFont(batch, game.assets().ubuntu.black_medium.normal, MyGdxGame.CAMERA_WIDTH / 2, 680, 0, 0, "to switch games!");
 		
-		int fingers = InputUtil.getTouches(50, viewport).size();
+		int fingers = InputUtil.getTouches(20, viewport).size();
 		
 		RenderUtil.drawCenteredFont(batch, game.assets().ubuntu.black_medium.normal, MyGdxGame.CAMERA_WIDTH / 2, 420, 0, 0, "You have " + fingers + " finger" + (fingers == 1 ? "" : "s") + "!");
 		

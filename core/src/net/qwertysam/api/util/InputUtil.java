@@ -16,10 +16,14 @@ public class InputUtil
 		
 		for (int i = 0; i < maxTouches; i++)
 		{
-			if (Gdx.input.isTouched(i))
-			{
-				Vector3 vector3 = viewport.unproject(new Vector3(Gdx.input.getX(i), Gdx.input.getY(i), 0F));
-				touches.add(new Vector2(vector3.x, vector3.y));
+			try {
+				if (Gdx.input.isTouched(i)) {
+					Vector3 vector3 = viewport.unproject(new Vector3(Gdx.input.getX(i), Gdx.input.getY(i), 0F));
+					touches.add(new Vector2(vector3.x, vector3.y));
+				}
+			}
+			catch (Exception e) {
+				break;
 			}
 		}
 		
