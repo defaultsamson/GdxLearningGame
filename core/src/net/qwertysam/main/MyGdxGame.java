@@ -33,9 +33,9 @@ public class MyGdxGame extends Game
 	/** The width of the virtual viewport. */
 	public static final float CAMERA_WIDTH = 720;
 	/** The height of the virtual viewport. */
-	public static final float CAMERA_HEIGHT = 1280;
-	
-	private static float gutterOffset;
+	public static final float CAMERA_HEIGHT = 1440; //1280
+
+	public static float gutterOffset;
 	
 	private boolean isYInverted;
 	
@@ -75,10 +75,12 @@ public class MyGdxGame extends Game
 		
 		files = new Files(this);
 		registerDisposable(files);
-		
+
+		/*
 		float percentageOfScreenShowing = ((float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getWidth()) * (CAMERA_WIDTH / CAMERA_HEIGHT);
 		float pixelsOffScreen = CAMERA_HEIGHT - (CAMERA_HEIGHT * percentageOfScreenShowing);
-		gutterOffset = pixelsOffScreen / 2;
+		gutterOffset = pixelsOffScreen / 2;*/
+		gutterOffset = 0;
 		
 		
 		// Load sequence

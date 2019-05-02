@@ -24,6 +24,8 @@ public class OldPlayScreen extends PhysicsScreen
 	PhysicsBoundsEntity worldBounds;
 	
 	PointLight light;
+
+	GuiTextButton backButton;
 	
 	public OldPlayScreen(MyGdxGame game)
 	{
@@ -59,7 +61,16 @@ public class OldPlayScreen extends PhysicsScreen
 	@Override
 	public void init()
 	{
-		registerEntry(new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_small.italic, 4F, 0, 20, game.getGutterOffset() + 20, TranslationKey.GUI_BUTTON_BACK));
+	    backButton = new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_small.italic, 4F, 0, 20, game.getGutterOffset() + 20, TranslationKey.GUI_BUTTON_BACK);
+		registerEntry(backButton);
+	}
+
+	@Override
+	public void resize(int width, int height)
+	{
+		super.resize(width, height);
+
+        backButton.setY(game.getGutterOffset() + 20);
 	}
 	
 	@Override

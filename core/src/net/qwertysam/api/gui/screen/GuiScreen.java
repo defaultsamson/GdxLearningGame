@@ -117,6 +117,10 @@ public abstract class GuiScreen extends RenderableHolder<GuiButton> implements S
 	{
 		System.out.println("Resizing ViewPort: (" + width + ", " + height + ")");
 		viewport.update(width, height, true);
+
+		float percentageOfScreenShowing = ((float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getWidth()) * (game.CAMERA_WIDTH / game.CAMERA_HEIGHT);
+		float pixelsOffScreen = game.CAMERA_HEIGHT - (game.CAMERA_HEIGHT * percentageOfScreenShowing);
+		game.gutterOffset = pixelsOffScreen / 2;
 	}
 	
 	@Override

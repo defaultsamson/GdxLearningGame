@@ -15,7 +15,7 @@ public abstract class TouchableArea
 	protected Rectangle rect;
 	
 	// These need separate variables because the rectangle's ones are offset by the touchRadius
-	private float x, y, width, height;
+	private float x, y, width, height, touchRadius;
 	
 	/**
 	 * An area that acts as an input for touch coordinates.
@@ -35,6 +35,7 @@ public abstract class TouchableArea
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.touchRadius = touchRadius;
 		
 		rect = new Rectangle(x - touchRadius, y - touchRadius, width + (touchRadius * 2), height + (touchRadius * 2));
 		// rect.setRotate(rotation);
@@ -181,6 +182,12 @@ public abstract class TouchableArea
 	{
 		return x;
 	}
+
+	public void setX(float x)
+	{
+		this.x = x;
+		rect.setX(x - touchRadius);
+	}
 	
 	/**
 	 * @return the y ordinate of this, ignoring the touch radius offset for the hitbox (useful for in-game visible coordinates or for rendering).
@@ -188,6 +195,12 @@ public abstract class TouchableArea
 	public float getY()
 	{
 		return y;
+	}
+
+	public void setY(float y)
+	{
+		this.y = y;
+		rect.setY(y - touchRadius);
 	}
 	
 	/**

@@ -6,7 +6,10 @@ import java.util.List;
 import com.badlogic.gdx.math.Vector2;
 
 import net.qwertysam.api.gui.GuiButton;
+import net.qwertysam.api.gui.GuiTextButton;
+import net.qwertysam.api.language.TranslationKey;
 import net.qwertysam.api.rendering.RenderUtil;
+import net.qwertysam.gui.screens.MainMenuGui;
 import net.qwertysam.main.MyGdxGame;
 
 public class StackEmScreen extends PlayScreen
@@ -15,6 +18,8 @@ public class StackEmScreen extends PlayScreen
 	private int p1xOrd, p1width, p2xOrd, p2width;
 	private boolean p1Dir, p2Dir;
 	private int tickCount;
+
+	GuiTextButton backButton;
 	
 	public StackEmScreen(MyGdxGame game)
 	{
@@ -33,7 +38,10 @@ public class StackEmScreen extends PlayScreen
 	@Override
 	public void init()
 	{
-		registerEntry(new GuiButton(this, game.assets().button_square, 4F, 0, 20, 300));
+		registerEntry(new GuiButton(this, game.assets().button_square, 4F, 0, 500, 300));
+
+		backButton = new GuiTextButton(this, game.assets().button_small, game.assets().ubuntu.white_small.italic, 4F, 1, 20, game.getGutterOffset() + 20, TranslationKey.GUI_BUTTON_BACK);
+		registerEntry(backButton);
 	}
 	
 	@Override
@@ -80,11 +88,24 @@ public class StackEmScreen extends PlayScreen
 		
 		tickCount++;
 	}
-	
+
+	@Override
+	public void resize(int width, int height)
+	{
+		super.resize(width, height);
+
+		backButton.setY(game.getGutterOffset() + 20);
+	}
+
 	@Override
 	public void releaseAction(int buttonID)
 	{
-	
+		switch (buttonID)
+		{
+			case 1:
+				game.setScreen(new MainMenuGui(game));
+				break;
+		}
 	}
 	
 	@Override
@@ -99,7 +120,7 @@ public class StackEmScreen extends PlayScreen
 					System.out.println(xOrd);
 				}
 				
-				System.out.println("OOMEGOO 1");
+				// System.out.println("OOMEGOO 1");
 				//game.getScripter().gotoNextLevel();
 				break;
 		}
@@ -120,7 +141,7 @@ public class StackEmScreen extends PlayScreen
 	@Override
 	public void drawScreen(float delta, float cameraXOffset, float cameraYOffset)
 	{
-		RenderUtil.drawCenteredFont(batch, game.assets().ubuntu.black_big.bold, 200, 200, 0, 0, "Hnng");
+		RenderUtil.drawCenteredFont(batch, game.assets().ubuntu.black_big.bold, 260, 330, 0, 0, "Stack ->");
 		
 		float playableGutter = 400;
 		
