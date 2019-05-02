@@ -23,7 +23,6 @@ public class Assets extends AssetLoader
 	}
 	
 	public Sprite kakchoke;
-	public List<Sprite> button;
 	public List<Sprite> button_large;
 	public List<Sprite> button_medium;
 	public List<Sprite> button_small;
@@ -57,7 +56,6 @@ public class Assets extends AssetLoader
 	{
 		// All the assets to be loaded.
 		addAsset(new Asset("kakchoke", "meme/kak2.png", Texture.class));
-		addAsset(new Asset("button", "buttons/button1.png", Texture.class));
 		addAsset(new Asset("button_large", "textures/gui/buttons/button_large.png", Texture.class));
 		addAsset(new Asset("button_medium", "textures/gui/buttons/button_medium.png", Texture.class));
 		addAsset(new Asset("button_small", "textures/gui/buttons/button_small.png", Texture.class));
@@ -82,7 +80,6 @@ public class Assets extends AssetLoader
 	public void initialize()
 	{
 		kakchoke = AssetBuilder.createSprite(this, "kakchoke");
-		button = AssetBuilder.createSprites(this, "button", 64);
 		button_large = AssetBuilder.createSprites(this, "button_large", 200, 20);
 		button_medium = AssetBuilder.createSprites(this, "button_medium", 140, 20);
 		button_small = AssetBuilder.createSprites(this, "button_small", 80, 20);

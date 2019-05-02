@@ -38,12 +38,12 @@ public class OldPlayScreen extends PhysicsScreen
 		spriteEntities = new RenderableHolder<PhysicsSpriteEntity>();
 		
 		spriteEntities.registerEntry(meme);
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(2, getWorld(), game.assets().potato, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 30000, 650, 0, false, true));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(3, getWorld(), game.assets().bill, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 650, 0, false, true));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(getWorld(), game.assets().bob, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 650, 0, false, false));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(getWorld(), game.assets().bill_mad, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 650, 0, true, false));
-		spriteEntities.registerEntry(new PhysicsSpriteEntity(getWorld(), game.assets().arthur, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 20000, 650, 0, false, false));
-		
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(2, getWorld(), game.assets().potato, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 30000, 650, 70, false, true));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(3, getWorld(), game.assets().bill, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 950, 0, false, true));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(getWorld(), game.assets().bob, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 850, 0, false, false));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(getWorld(), game.assets().bill_mad, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 15000, 20, 300, true, false));
+		spriteEntities.registerEntry(new PhysicsSpriteEntity(getWorld(), game.assets().arthur, PhysicsEntity.DEFAULT_FRICTION, PhysicsEntity.DEFAULT_RESTITUTION, 20000, 700, 700, false, false));
+
 		rayHandler.setAmbientLight(0.5F);
 		
 		LightBuilder.createPointLight(rayHandler, 200, 1.5F, new Color(0F, 0F, 0F, 1F), 800, false, 200, 200);
