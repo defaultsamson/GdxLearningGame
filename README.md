@@ -1,4 +1,4 @@
-## GdxLearningGame
+# GdxLearningGame
 An Android and Desktop game created as a prototype to help myself learn to use [IntelliJ IDEA](https://www.jetbrains.com/idea/download), the [Android SDK](https://developer.android.com/studio/index.html#downloads), and [libGDX](https://libgdx.badlogicgames.com/).
 
 ## Contributing
@@ -12,7 +12,7 @@ An Android and Desktop game created as a prototype to help myself learn to use [
 
 Now you can run the game!
 
-#### Troubleshooting
+### Troubleshooting
 - If you are getting errors from Gradle about not being able to compile the :android project, you must either configure your system's ANDROID_HOME or create the file `GdxLearningGame/local.properties` and add the line `sdk.dir=/path/to/your/Android/Sdk`
 - If running the game from an IDE is failing to load the assets, you may need to change your Run/Debug configuration to have the working directory set to `GdxLearningGame/android/assets` (this is because the desktop and android modules both rely on the same Android assets folder)
 - When exporting as a JAR file, you may need to...
