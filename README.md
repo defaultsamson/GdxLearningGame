@@ -1,13 +1,14 @@
 ## GdxLearningGame
-An Android and Desktop game created as a prototype to help myself learn to use IntelliJ IDEA, the Android SDK, and libGDX.
+An Android and Desktop game created as a prototype to help myself learn to use [IntelliJ IDEA](https://www.jetbrains.com/idea/download), the [Android SDK](https://developer.android.com/studio/index.html#downloads), and [libGDX](https://libgdx.badlogicgames.com/).
 
 ## Contributing
 
-1. (If not already installed), install [IntelliJ IDEA](https://www.jetbrains.com/idea/download), [Eclipse](https://www.eclipse.org/downloads/), [Android Studio](https://developer.android.com/studio), or any IDE of your choice 
-3. (If not already installed), install [OpenJDK 8+](https://openjdk.java.net/install/) (or the [Oracle Java SE JDK 8+](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)) and [Android SDK](https://developer.android.com/studio/releases/sdk-tools)
+1. If not already installed, install [IntelliJ IDEA](https://www.jetbrains.com/idea/download), [Eclipse](https://www.eclipse.org/downloads/), [Android Studio](https://developer.android.com/studio), or any IDE of your choice 
+2. If not already installed, install [OpenJDK 8+](https://openjdk.java.net/install/) or the [Oracle Java SE JDK 8+](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+3. If not already installed, install the [Android SDK](https://developer.android.com/studio/index.html#downloads) (can be found under Command line tools only)
 4. Clone this repository with `git clone https://github.com/qwertysam/GdxLearningGame.git`
 5. Open the project in an IDE, and sync Gradle to download all the dependencies
-5. The main source files are found in `GdxLearningGame/core/src`
+6. The main source files are found in `GdxLearningGame/core/src`
 
 Now you can run the game!
 
